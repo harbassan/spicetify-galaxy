@@ -21,7 +21,7 @@ aside.main-buddyFeed-buddyFeedRoot {
 .main-buddyFeed-buddyFeed {
   padding-top: calc(48px + 16px);
 }
-/*
+/* 
 -------------------
 NAVIGATION BAR
 -------------------
@@ -51,7 +51,11 @@ NAVIGATION BAR
   padding: 0;
   color: var(--spice-text);
 }
-.main-navBar-navBarItem .collection-icon {
+.main-navBar-navBar {
+  position: relative;
+}
+.main-navBar-navBarItem .collection-icon,
+.main-navBar-navBarItem .search-icon {
   color: white;
   width: 20px;
   height: 20px;
@@ -65,7 +69,7 @@ button.main-createPlaylistButton-button {
   opacity: 1;
 }
 img.main-avatar-image {
-  opacity: 0.7;
+  opacity: 0.6;
 }
 a.link-subtle.main-navBar-navBarLink,
 a.main-collectionLinkButton-collectionLinkButton {
@@ -118,21 +122,27 @@ TOP BAR
   visibility: hidden;
 }
 .main-topBar-historyButtons {
-  position: absolute;
-  left: calc(var(--nav-bar-width) + 25px);
+  /* position: absolute;
+  left: calc(var(--nav-bar-width) + 25px); */
   gap: 10px;
 }
 .Root__top-bar .ButtonInner-sc-14ud5tc-0.fpCtYO.encore-bright-accent-set {
   height: 32px;
   width: 32px;
 }
-.Root__top-bar svg.Svg-sc-1bi12j5-0.EQkJl {
+.Root__top-bar svg.Svg-ytk21e-0.eqtHWV.mOLTJ2mxkzHJj6Y9_na_ {
   width: 18px;
   height: 18px;
+  color: white;
 }
 .main-userWidget-box span,
 .main-userWidget-box svg {
   display: none;
+}
+.main-userWidget-box figure.main-avatar-avatar,
+.main-userWidget-box figure.main-avatar-avatar div {
+  width: 32px !important;
+  height: 32px !important;
 }
 button.main-userWidget-box {
   position: absolute;
@@ -158,10 +168,11 @@ a.main-topBar-button,
   height: 18px;
   width: 18px;
 }
-input.Type__TypeElement-goli3j-0.cPwEdQ.x-searchInput-searchInputInput {
+input.Type__TypeElement-goli3j-0.iTnRIT.x-searchInput-searchInputInput {
   background-color: rgba(var(--spice-rgb-shadow), 0.7);
   height: 32px;
   border-radius: 8px;
+  color: white !important;
 }
 /*
 -------------------
@@ -214,14 +225,14 @@ footer.main-nowPlayingBar-container {
   flex-grow: 1;
 }
 .main-nowPlayingBar-right {
-  width: 313px;
+  width: 280px;
 }
 
 .main-nowPlayingBar-left {
   width: 20%;
 }
 .Root__now-playing-bar {
-  padding: 0 16px 0 8px;
+  padding-right: 10px;
 }
 /*
 -------------------
@@ -313,8 +324,13 @@ MAIN VIEW
 SEARCH PAGE
 -------------------
 */
-.fVB_YDdnaDlztX7CcWTA {
+.fVB_YDdnaDlztX7CcWTA,
+.search-searchCategory-SearchCategory {
   background: none;
+}
+[fade="top"] .search-searchCategory-SearchCategory,
+[fade="full"] .search-searchCategory-SearchCategory {
+  visibility: hidden;
 }
 /*
 -------------------
@@ -411,7 +427,7 @@ ARTIST PAGE
 .main-entityHeader-title {
   text-align: center;
 }
-h1.Type__TypeElement-goli3j-0.eczMAK {
+h1.Type__TypeElement-goli3j-0.beQQox {
   font-size: 56px !important;
   line-height: 56px !important;
 }
@@ -426,6 +442,9 @@ h1.Type__TypeElement-goli3j-0.eczMAK {
 }
 .q9GR66ZTM4HH42Z_qroQ {
   --column-count: 7 !important;
+}
+.artist-artistOverview-artistOverviewContent {
+  background: none;
 }
 /*
 -------------------
