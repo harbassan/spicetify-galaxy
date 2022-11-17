@@ -1,0 +1,15 @@
+{
+  "name": "Galaxy",
+  "description": "Vibrant, and fully customisable. Uses fullscreen images to greatly improve your Spotify experience.",
+  "preview": "preview.png",
+  "readme": "README.md",
+  "usercss": "user.css",
+  "schemes": "color.ini",
+  "include": ["https://raw.githubusercontent.com/harbassan/spicetify-galaxy/main/galaxy.js"],
+  "authors": [
+    {
+      "name": "harbassan",
+      "url": "https://github.com/harbassan"
+    }
+  ]
+}
