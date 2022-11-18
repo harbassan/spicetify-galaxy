@@ -1,6 +1,6 @@
 {
   "name": "Galaxy",
-  "description": "Uses fullscreen images to greatly improve your Spotify experience.",
+  "description": "Uses fullscreen images to greatly improve your Spotify experience. Add your own images to playlists and the home page",
   "preview": "preview.png",
   "readme": "README.md",
   "usercss": "user.css",
