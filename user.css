@@ -389,7 +389,7 @@ span.IconWrapper__Wrapper-sc-1hf1hjl-0.fSnHJ,
 }
 .main-playButton-PlayButton:focus,
 .main-playButton-PlayButton:hover {
-  background: none;
+  background: none !important;
 }
 .main-entityHeader-titleButton {
   width: auto;
