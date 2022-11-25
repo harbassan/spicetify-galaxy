@@ -99,7 +99,7 @@ a.main-collectionLinkButton-collectionLinkButton.main-collectionLinkButton-selec
   opacity: 1;
 }
 a.main-collectionLinkButton-collectionLinkButton.main-collectionLinkButton-selected.active {
-  background: none;
+  background: none !important;
 }
 /*
 -------------------
