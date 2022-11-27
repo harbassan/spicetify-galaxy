@@ -199,6 +199,11 @@ button.marketplace-header-icon-button {
 a.queue-tabBar-headerItemLink.queue-tabBar-active {
   background-color: rgba(var(--spice-rgb-shadow), 0.7);
 }
+div#marketplace-readme {
+  background: none;
+  margin-left: 0;
+  padding: 0;
+}
 /*
 -------------------
 PLAYER BAR
