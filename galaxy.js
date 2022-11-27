@@ -178,6 +178,9 @@
   Spicetify.Platform.History.listen(async ({ pathname }) => {
     const [, type, uid] = pathname.split("/");
     if (type === "playlist" || type === "album" || type === "artist") loadBg(uid, type);
+    else if (type === "") {
+      bgImage.src = startImage;
+    }
     type === "playlist"
       ? playlistEdit.element.classList.toggle("hidden", false)
       : playlistEdit.element.classList.toggle("hidden", true);

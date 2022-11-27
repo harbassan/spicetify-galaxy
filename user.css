@@ -20,6 +20,14 @@ aside.main-buddyFeed-buddyFeedRoot {
 }
 .main-buddyFeed-buddyFeed {
   padding-top: calc(48px + 16px);
+  box-shadow: none !important;
+}
+.main-buddyFeed-activityMetadata .main-buddyFeed-username a,
+.main-buddyFeed-activityMetadata .main-buddyFeed-artistAndTrackName a {
+  color: var(--spice-text);
+}
+.KdxlBanhDJjzmHfqhP0X {
+  opacity: 0.8;
 }
 /* 
 -------------------
@@ -69,7 +77,7 @@ button.main-createPlaylistButton-button {
   opacity: 1;
 }
 img.main-avatar-image {
-  opacity: 0.6;
+  opacity: 0.8;
 }
 a.link-subtle.main-navBar-navBarLink,
 a.main-collectionLinkButton-collectionLinkButton {
@@ -84,6 +92,9 @@ a.main-collectionLinkButton-collectionLinkButton::before {
   margin-left: -24px;
   position: absolute;
   transition: all 0.2s ease-in-out;
+}
+a.link-subtle.main-navBar-navBarLink {
+  color: var(--spice-text);
 }
 .main-navBar-navBarLinkActive::before,
 a.main-collectionLinkButton-collectionLinkButton.main-collectionLinkButton-selected::before {
