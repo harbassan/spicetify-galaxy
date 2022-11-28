@@ -38,10 +38,6 @@ NAVIGATION BAR
   background: linear-gradient(rgba(var(--spice-rgb-sidebar), 0.3) 50%, transparent) !important;
   border-radius: 0 !important;
 }
-.Root__nav-bar {
-  margin-top: calc(-48px - 16px);
-  padding-top: calc(48px + 16px);
-}
 .main-rootlist-rootlistDividerContainer {
   visibility: hidden;
 }
@@ -59,9 +55,9 @@ NAVIGATION BAR
   padding: 0;
   color: var(--spice-text);
 }
-.main-navBar-navBar {
+/* .main-navBar-navBar {
   position: relative;
-}
+} */
 .main-navBar-navBarItem .collection-icon,
 .main-navBar-navBarItem .search-icon {
   color: white;
@@ -122,9 +118,6 @@ TOP BAR
 }
 .main-topBar-background {
   display: none;
-}
-.main-topBar-topBarContainer.Root__fixed-top-bar:nth-last-child(6) {
-  grid-template-columns: var(--nav-bar-width) auto 0;
 }
 .main-topBar-topBarContainer.Root__fixed-top-bar:nth-last-child(7) {
   grid-template-columns: var(--nav-bar-width) auto var(--buddy-feed-width);
@@ -558,4 +551,45 @@ div[aria-label="Galaxy Settings"] .main-trackCreditsModal-mainSection {
 .main-userWidget-dropDownMenu li.main-contextMenu-menuItem > div {
   left: calc(225px + 185px) !important;
   width: 225px;
+}
+/*
+-------------------
+NEW HOME LAYOUT
+-------------------
+*/
+.main-topBar-topBarContainer.Root__fixed-top-bar:nth-last-child(6) {
+  grid-template-columns: var(--nav-bar-width) auto 0;
+}
+a.zuf9gCpkf86KkzzCtkJN {
+  background-color: rgba(var(--spice-rgb-shadow), 0.7);
+  height: 32px;
+  border-radius: 8px;
+  color: white !important;
+  padding: 0;
+  width: 32px;
+  align-items: center;
+}
+.zuf9gCpkf86KkzzCtkJN span.Type__TypeElement-goli3j-0.ipKmGr {
+  display: none;
+}
+.main-topBar-sectionWrapper.main-topBar-left {
+  padding-left: calc(var(--nav-bar-width) + 16px) !important;
+}
+svg.Svg-ytk21e-0.eqtHWV.home-icon,
+svg.Svg-ytk21e-0.eqtHWV.home-active-icon {
+  width: 18px;
+  height: 18px;
+}
+.nav-alt .Root__nav-bar {
+  margin-top: -64px;
+  padding-top: calc(48px - 12px);
+}
+.nav-alt .main-coverSlotCollapsed-container.main-coverSlotCollapsed-navAltContainer {
+  transform: none;
+}
+a.zuf9gCpkf86KkzzCtkJN:hover {
+  background-color: rgba(var(--spice-rgb-shadow), 0.7);
+}
+input.Type__TypeElement-goli3j-0.iTnRIT.x-searchInput-searchInputInput:hover {
+  box-shadow: none;
 }
