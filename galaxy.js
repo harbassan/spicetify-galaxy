@@ -1,5 +1,5 @@
 (function galaxy() {
-    if (!(Spicetify.Platform && Spicetify.Platform)) {
+    if (!(Spicetify.Player.data && Spicetify.Platform)) {
         setTimeout(galaxy, 100);
         return;
     }
@@ -14,6 +14,7 @@
     }
 
     const defImage = `https://github.com/harbassan/spicetify-galaxy/blob/main/assets/default_bg.jpg?raw=true`;
+    const useCurrSongAsHome = JSON.parse(localStorage.getItem("useCurrentSongAsHome"))
 
     // input for custom background images
     const bannerInput = document.createElement("input");
@@ -99,14 +100,12 @@
 
     // create the background elements
     const startImage = localStorage.getItem("galaxy:startupBg") || defImage;
-    Spicetify.Player.data.track.metadata.image_xlarge_url;
     const bgContainer = document.createElement("div");
     bgContainer.className = "bg-main-container";
     bgContainer.innerHTML = `</div><div class="bg-image-container"><img class="bg-main-image" src=""></div><div class="bg-main-shadow">`;
-    document.body.prepend(bgContainer);
     const bgImage = bgContainer.children[0].children[0];
-
-    bgImage.src = JSON.parse(localStorage.getItem("useCurrentSongAsHome")) ? Spicetify.Player.data.track.metadata.image_xlarge_url : startImage;
+    bgImage.src = useCurrSongAsHome ? Spicetify.Player.data.track.metadata.image_xlarge_url : startImage;
+    document.body.prepend(bgContainer);
 
     // move user profile icon to navbar
     waitForElement([".main-userWidget-box"], ([profMenu]) => {
@@ -208,7 +207,7 @@
 
         // change background images for certain pages
         if (["playlist", "album", "artist"].includes(type)) loadBg(uid, type);
-        else if (pathname === "/") bgImage.src = JSON.parse(localStorage.getItem("useCurrentSongAsHome")) ? curSong : startImage;
+        else if (pathname === "/") bgImage.src = useCurrSongAsHome ? curSong : startImage;
         else if (type === "lyrics") bgImage.src = curSong;
 
         // add or remove topbar edit buttons
@@ -219,7 +218,7 @@
     // change home and lyrics page background on songchange
     Spicetify.Player.addEventListener("songchange", () => {
         const pathname = Spicetify.Platform.History.location.pathname;
-        if (pathname == "/lyrics" || (pathname == "/" && JSON.parse(localStorage.getItem("useCurrentSongAsHome")))) {
+        if (pathname == "/lyrics" || (pathname == "/" && useCurrSongAsHome)) {
             bgImage.src = Spicetify.Player.data.track.metadata.image_xlarge_url;
         }
     });
