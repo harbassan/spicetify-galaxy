@@ -536,7 +536,7 @@ POPUP MODAL
   grid-template: 180px 32px 1fr 32px 32px/180px 1fr;
   grid-template-areas:
     "album-image banner-image"
-    "title title"
+    "title src-select"
     "description description"
     ". save-button"
     "disclaimer disclaimer";
@@ -547,6 +547,12 @@ POPUP MODAL
 }
 .banner-input {
   display: none;
+}
+#src-select {
+  grid-area: src-select;
+}
+.main-playlistEditDetailsModal-textElement:focus {
+  background-color: rgba(var(--spice-rgb-selected-row), 0.1);
 }
 /*
 -------------------
@@ -606,6 +612,9 @@ div[aria-label="Galaxy Settings"] .main-trackCreditsModal-mainSection {
   overflow-y: hidden;
   padding: 24px;
 }
+.main-trackCreditsModal-container {
+  max-height: 520px;
+}
 .main-trackCreditsModal-originalCredits {
   padding-bottom: 0;
 }
@@ -639,6 +648,29 @@ span.toggle {
 }
 span.toggle.enabled {
   margin-left: 20px;
+}
+#src-input {
+  margin-bottom: 15px;
+}
+.main-editImageButton-icon svg {
+  fill: currentColor;
+}
+.main-playlistEditDetailsModal-imageDropDownButton svg {
+  fill: currentColor;
+}
+#home-save {
+  display: block;
+  margin-left: auto;
+  margin-top: 20px;
+  width: 100px;
+  height: 48px;
+  color: black;
+  border-radius: 24px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+#home-save:hover {
+  transform: scale(1.05);
 }
 /*
 -------------------
@@ -680,7 +712,7 @@ a.zuf9gCpkf86KkzzCtkJN {
   height: 32px;
   border-radius: 8px;
   padding-left: 42px;
-  color: var(--spice-text)
+  color: var(--spice-text) !important;
 }
 a.zuf9gCpkf86KkzzCtkJN:hover {
   background-color: rgba(var(--spice-rgb-shadow), 0.7);

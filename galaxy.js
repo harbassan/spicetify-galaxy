@@ -9,8 +9,8 @@
   });
 
   const defImage = `https://github.com/harbassan/spicetify-galaxy/blob/main/assets/default_bg.jpg?raw=true`;
-
   const useCurrSongAsHome = JSON.parse(localStorage.getItem("useCurrentSongAsHome"));
+  let startImage = localStorage.getItem("galaxy:startupBg") || defImage;
 
   async function fetchCurrTrackAlbumImage() {
     const data = Spicetify.Player.data.track.metadata;
@@ -106,6 +106,12 @@
           bannerSelect.querySelector("img").removeAttribute("srcset");
         }
 
+        const srcInput = document.createElement("input");
+        srcInput.type = "text";
+        srcInput.classList.add("main-playlistEditDetailsModal-textElement", "main-playlistEditDetailsModal-titleInput");
+        srcInput.id = "src-input";
+        srcInput.placeholder = "Banner image URL (recommended)";
+
         const optButton = bannerSelect.querySelector(".main-playlistEditDetailsModal-imageDropDownButton");
         optButton.querySelector("svg").children[0].remove();
         optButton.querySelector("svg").append(document.querySelector(".main-playlistEditDetailsModal-closeBtn path").cloneNode());
@@ -113,16 +119,25 @@
         optButton.onclick = () => {
           localStorage.removeItem("galaxy:playlistBg:" + uid);
           bannerSelect.querySelector("img").src = coverSelect.querySelector("img").src;
-          loadBg_playlist(uid);
         };
 
         popupContent.append(bannerSelect);
         popupContent.append(bannerInput);
+        popupContent.append(srcInput);
 
         const editButton = bannerSelect.querySelector(".main-editImageButton-image.main-editImageButton-overlay");
         editButton.onclick = () => {
           bannerInput.click();
         };
+
+        const save = popupContent.querySelector(".main-playlistEditDetailsModal-save button");
+        save.addEventListener("click", () => {
+          if (srcInput.value) {
+            console.log(srcInput.value);
+            localStorage.setItem("galaxy:playlistBg:" + uid, srcInput.value);
+          }
+          getPlaylistImage(uid);
+        });
       }
     }
   });
@@ -139,7 +154,6 @@
       const result = event.target.result;
       const [, , uid] = Spicetify.Platform.History.location.pathname.split("/");
       if (!uid) {
-        console.log("heblisw");
         try {
           localStorage.setItem("galaxy:startupBg", result);
         } catch {
@@ -164,7 +178,6 @@
   };
 
   // create the background elements
-  const startImage = localStorage.getItem("galaxy:startupBg") || defImage;
   const bgContainer = document.createElement("div");
   bgContainer.className = "bg-main-container";
   bgContainer.innerHTML = `</div><div class="bg-image-container"><img class="bg-main-image"></div><div class="bg-main-shadow">`;
@@ -232,7 +245,14 @@
       content.append(optionRow);
     }
 
-    createOption("useCurrentSongAsHome", "Use the currently playing song as the home background", false);
+    const srcInput = document.createElement("input");
+    srcInput.type = "text";
+    srcInput.classList.add("main-playlistEditDetailsModal-textElement", "main-playlistEditDetailsModal-titleInput");
+    srcInput.id = "src-input";
+    srcInput.placeholder = "Banner image URL (recommended)";
+    content.append(srcInput);
+
+    createOption("useCurrentSongAsHome", "Use currently playing song as home bg", false);
 
     img = content.querySelector("img");
     img.src = localStorage.getItem("galaxy:startupBg") || defImage;
@@ -244,7 +264,25 @@
     removeButton.onclick = () => {
       localStorage.removeItem("galaxy:startupBg");
       content.querySelector("img").src = defImage;
+      startImage = defImage;
+      if (!useCurrSongAsHome) setBg(startImage);
     };
+
+    const save = document.createElement("button");
+    save.id = "home-save";
+    save.innerHTML = "Save";
+
+    save.addEventListener("click", () => {
+      if (srcInput.value) {
+        console.log(srcInput.value);
+        startImage = srcInput.value;
+        localStorage.setItem("galaxy:startupBg", srcInput.value);
+      }
+      if (!useCurrSongAsHome) setBg(startImage);
+    });
+
+    content.append(save);
+
     Spicetify.PopupModal.display({ title: "Galaxy Settings", content: content });
   });
   homeEdit.element.classList.toggle("hidden", false);

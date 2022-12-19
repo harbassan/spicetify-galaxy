@@ -10,6 +10,22 @@
 
 ---
 
+### Customisation
+
+To change the home background image and playlist background images click the edit button which shows up on the top left of the page. This will open a menu where you can input the image, either by entering the url (the recommended option) or choosing a locally downloaded image. There is also an option on the home page to use the currently playing song as the background.
+
+Note that if you select locally downloaded images for the backgrounds, there will be a limited space. Therefore using urls is much better, and a good way to do this is by hosting the images on a cloud storage service and then inputing the urls.
+
+If there is no custom image set for a playlist it will default to the cover image.
+
+Go into your theme folder and open either:
+
+`color.ini` to modify the colors
+
+`user.css` to modify the style code
+
+---
+
 ### Manual Installation
 
 After cloning the repo add the files `user.css` and `color.ini` into a new folder named `Galaxy`, and place this folder into your `Themes` folder in `.spicetify`.
@@ -30,20 +46,6 @@ Then run the commands:
 spicetify config extensions galaxy.js
 spicetify apply
 ```
-
----
-
-### Customisation
-
-Go into your theme folder and open either:
-
-`color.ini` to modify the colors
-
-`user.css` to modify the code
-
-To change the home image and playlist images you can do so via the edit button that will show in the top left of the page.
-
-There is a limited space for custom images so I would recommend shrinking the file sizes of your images and adding the home page image first. If there is no custom image set for a playlist it will default to the cover image.
 
 ---
 
