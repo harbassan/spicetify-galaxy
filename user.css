@@ -45,6 +45,9 @@ BUDDY FEED
 .NdQkQZhcYIEcJnRdAYcQ {
   padding-left: 12px;
 }
+.main-avatar-avatar:after {
+  background-color: var(--spice-text) !important;
+}
 /* 
 -------------------
 NAVIGATION BAR
@@ -81,6 +84,10 @@ a.link-subtle.main-navBar-navBarLink svg,
   color: var(--spice-text);
   width: 20px;
   height: 20px;
+}
+.main-navBar-navBarItem .collection-active-icon {
+  height: 20px;
+  width: 20px;
 }
 .main-navBar-navBarItem .collection-active-icon,
 .main-navBar-navBarItem .search-active-icon,
@@ -348,23 +355,11 @@ MAIN VIEW
 }
 .main-trackList-trackListRow:focus-within,
 .main-trackList-trackListRow:hover {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(var(--spice-rgb-selected-row), 0.07) 30%,
-    rgba(var(--spice-rgb-selected-row), 0.07) 60%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg, transparent 0%, rgba(var(--spice-rgb-selected-row), 0.07) 30%, rgba(var(--spice-rgb-selected-row), 0.07) 60%, transparent 100%);
 }
 .main-trackList-trackListRow.main-trackList-selected,
 .main-trackList-trackListRow.main-trackList-selected:hover {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(var(--spice-rgb-selected-row), 0.07) 30%,
-    rgba(var(--spice-rgb-selected-row), 0.07) 60%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg, transparent 0%, rgba(var(--spice-rgb-selected-row), 0.07) 30%, rgba(var(--spice-rgb-selected-row), 0.07) 60%, transparent 100%);
 }
 .main-card-card .main-card-imageContainer {
   transition: transform 0.35s ease;
@@ -579,11 +574,7 @@ BACKGROUND ELEMENTS
   bottom: 0;
 }
 .bg-main-shadow {
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.196) 203px,
-    rgba(0, 0, 0, 0.518) 474px,
-    rgba(0, 0, 0, 0.596) 700px
-  ) !important;
+  background: linear-gradient(rgba(0, 0, 0, 0.196) 203px, rgba(0, 0, 0, 0.518) 474px, rgba(0, 0, 0, 0.596) 700px) !important;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -599,13 +590,7 @@ img.bg-main-image {
   position: absolute;
   height: 100%;
   object-fit: cover;
-  -webkit-mask-image: linear-gradient(
-    to left,
-    rgba(0, 0, 0, 0.9) 0,
-    black 250px,
-    black calc(100% - 250px),
-    rgba(0, 0, 0, 0.9) 100%
-  );
+  -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.9) 0, black 250px, black calc(100% - 250px), rgba(0, 0, 0, 0.9) 100%);
 }
 .lyrics-lyrics-background {
   display: none;

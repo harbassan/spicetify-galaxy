@@ -10,6 +10,7 @@
 
   const defImage = `https://github.com/harbassan/spicetify-galaxy/blob/main/assets/default_bg.jpg?raw=true`;
   const useCurrSongAsHome = JSON.parse(localStorage.getItem("useCurrentSongAsHome"));
+  const useHomeEverywhere = JSON.parse(localStorage.getItem("useHomeEverywhere"));
   let startImage = localStorage.getItem("galaxy:startupBg") || defImage;
 
   async function fetchCurrTrackAlbumImage() {
@@ -20,6 +21,7 @@
   }
 
   async function fetchAlbumImage(uid) {
+    if (useHomeEverywhere) return;
     const data = await Spicetify.CosmosAsync.get(`https://api.spotify.com/v1/albums/${uid}`);
     setBg(data.images[0].url);
     const dataHigh = await Spicetify.CosmosAsync.get(`https://api.deezer.com/search?q=artist:"${data.artists[0].name}" album:"${data.name}"`);
@@ -47,7 +49,9 @@
 
   async function fetchPlaylistImage(uid) {
     const uri = Spicetify.URI.playlistV2URI(uid);
-    Spicetify.CosmosAsync.get(`sp://core-playlist/v1/playlist/${uri.toURI()}/metadata`, { policy: { picture: true } }).then(data => {
+    Spicetify.CosmosAsync.get(`sp://core-playlist/v1/playlist/${uri.toURI()}/metadata`, {
+      policy: { picture: true },
+    }).then(data => {
       setBg(data.metadata.picture);
     });
 
@@ -57,6 +61,7 @@
   }
 
   function getPlaylistImage(uid) {
+    if (useHomeEverywhere) return;
     if (localStorage.getItem("galaxy:playlistBg:" + uid)) {
       setBg(localStorage.getItem("galaxy:playlistBg:" + uid));
       return;
@@ -223,7 +228,15 @@
   // create edit home topbar button
   const homeEdit = new Spicetify.Topbar.Button("edit-home", "edit", () => {
     const content = document.createElement("div");
-    content.innerHTML = `<div class="main-playlistEditDetailsModal-albumCover" id="home-select"><div class="main-entityHeader-image" draggable="false"><img aria-hidden="false" draggable="false" loading="eager" class="main-image-image main-entityHeader-image main-entityHeader-shadow"></div><div class="main-playlistEditDetailsModal-imageChangeButton"><div class="main-editImage-buttonContainer"><button class="main-editImageButton-image main-editImageButton-overlay" aria-haspopup="true" type="button"><div class="main-editImageButton-icon icon"><svg role="img" height="48" width="48" aria-hidden="true" viewBox="0 0 24 24" class="Svg-sc-1bi12j5-0 EQkJl"><path d="M17.318 1.975a3.329 3.329 0 114.707 4.707L8.451 20.256c-.49.49-1.082.867-1.735 1.103L2.34 22.94a1 1 0 01-1.28-1.28l1.581-4.376a4.726 4.726 0 011.103-1.735L17.318 1.975zm3.293 1.414a1.329 1.329 0 00-1.88 0L5.159 16.963c-.283.283-.5.624-.636 1l-.857 2.372 2.371-.857a2.726 2.726 0 001.001-.636L20.611 5.268a1.329 1.329 0 000-1.879z"></path></svg><span class="Type__TypeElement-goli3j-0 gAmaez main-editImageButton-copy">Choose photo</span></div></button></div></div><div class="main-playlistEditDetailsModal-imageDropDownContainer"><button class="main-playlistEditDetailsModal-imageDropDownButton" type="button"><svg role="img" height="16" width="16" viewBox="0 0 16 16" class="Svg-sc-1bi12j5-0 EQkJl"><path d="M1.47 1.47a.75.75 0 011.06 0L8 6.94l5.47-5.47a.75.75 0 111.06 1.06L9.06 8l5.47 5.47a.75.75 0 11-1.06 1.06L8 9.06l-5.47 5.47a.75.75 0 01-1.06-1.06L6.94 8 1.47 2.53a.75.75 0 010-1.06z"></path></svg><span class="hidden-visually">Edit photo</span></button></div></div>`;
+    content.innerHTML = `
+    <div class="main-playlistEditDetailsModal-albumCover" id="home-select">
+      <div class="main-entityHeader-image" draggable="false">
+        <img aria-hidden="false" draggable="false" loading="eager" class="main-image-image main-entityHeader-image main-entityHeader-shadow"></div>
+      <div class="main-playlistEditDetailsModal-imageChangeButton">
+        <div class="main-editImage-buttonContainer">
+          <button class="main-editImageButton-image main-editImageButton-overlay" aria-haspopup="true" type="button">
+            <div class="main-editImageButton-icon icon">
+              <svg role="img" height="48" width="48" aria-hidden="true" viewBox="0 0 24 24" class="Svg-sc-1bi12j5-0 EQkJl"><path d="M17.318 1.975a3.329 3.329 0 114.707 4.707L8.451 20.256c-.49.49-1.082.867-1.735 1.103L2.34 22.94a1 1 0 01-1.28-1.28l1.581-4.376a4.726 4.726 0 011.103-1.735L17.318 1.975zm3.293 1.414a1.329 1.329 0 00-1.88 0L5.159 16.963c-.283.283-.5.624-.636 1l-.857 2.372 2.371-.857a2.726 2.726 0 001.001-.636L20.611 5.268a1.329 1.329 0 000-1.879z"></path></svg><span class="Type__TypeElement-goli3j-0 gAmaez main-editImageButton-copy">Choose photo</span></div></button></div></div><div class="main-playlistEditDetailsModal-imageDropDownContainer"><button class="main-playlistEditDetailsModal-imageDropDownButton" type="button"><svg role="img" height="16" width="16" viewBox="0 0 16 16" class="Svg-sc-1bi12j5-0 EQkJl"><path d="M1.47 1.47a.75.75 0 011.06 0L8 6.94l5.47-5.47a.75.75 0 111.06 1.06L9.06 8l5.47 5.47a.75.75 0 11-1.06 1.06L8 9.06l-5.47 5.47a.75.75 0 01-1.06-1.06L6.94 8 1.47 2.53a.75.75 0 010-1.06z"></path></svg><span class="hidden-visually">Edit photo</span></button></div></div>`;
 
     function createOption(name, desc, defVal) {
       const optionRow = document.createElement("div");
@@ -253,6 +266,7 @@
     content.append(srcInput);
 
     createOption("useCurrentSongAsHome", "Use currently playing song as home bg", false);
+    createOption("useHomeEverywhere", "Use the home bg everywhere", false);
 
     img = content.querySelector("img");
     img.src = localStorage.getItem("galaxy:startupBg") || defImage;
@@ -308,6 +322,10 @@
       isDim ? topbarWrapper.classList.add("center") : topbarWrapper.classList.remove("center");
     });
 
+    // add or remove topbar edit buttons
+    playlistEdit.element.classList.toggle("hidden", type !== "playlist");
+    homeEdit.element.classList.toggle("hidden", pathname !== "/");
+
     // change background images for certain pages
     switch (type) {
       case "playlist":
@@ -320,18 +338,14 @@
         fetchAlbumImage(uid);
     }
 
-    if (pathname === "/") useCurrSongAsHome ? fetchCurrTrackAlbumImage() : setBg(startImage);
-    else if (type === "lyrics") fetchCurrTrackArtisImage();
-
-    // add or remove topbar edit buttons
-    playlistEdit.element.classList.toggle("hidden", type !== "playlist");
-    homeEdit.element.classList.toggle("hidden", pathname !== "/");
+    if (pathname === "/" || (useHomeEverywhere && type != "artist")) useCurrSongAsHome ? fetchCurrTrackAlbumImage() : setBg(startImage);
+    if (type === "lyrics") fetchCurrTrackAlbumImage();
   });
 
   // change home and lyrics page background on songchange
   Spicetify.Player.addEventListener("songchange", () => {
     const pathname = Spicetify.Platform.History.location.pathname;
-    if (pathname == "/lyrics" || (pathname == "/" && useCurrSongAsHome)) {
+    if (pathname == "/lyrics" || (pathname == "/" && useCurrSongAsHome) || (useHomeEverywhere && useCurrSongAsHome && !pathname.includes("/artist/"))) {
       fetchCurrTrackAlbumImage();
     }
   });
