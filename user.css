@@ -372,8 +372,8 @@ MAIN VIEW
   background: rgba(0, 0, 0, 0.3) !important;
 }
 .marketplace-header__left {
-  position: absolute;
-  left: 0;
+  position: absolute !important;
+  left: 0 !important;
 }
 .view-homeShortcutsGrid-shortcut {
   background: rgba(0, 0, 0, 0.3) !important;
