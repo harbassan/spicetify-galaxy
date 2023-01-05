@@ -15,7 +15,8 @@ html {
 BUDDY FEED
 -------------------
 */
-aside.Root__right-sidebar {
+.Root__right-sidebar,
+.main-buddyFeed-buddyFeedRoot {
   background: linear-gradient(rgba(var(--spice-rgb-sidebar), 0.3) 50%, transparent) !important;
   border-radius: 0 !important;
   margin-top: calc(-48px - 16px);
@@ -27,6 +28,11 @@ aside.Root__right-sidebar {
   padding-top: calc(16px + 48px);
   box-shadow: none !important;
 }
+/* for older spotify vers */
+.main-buddyFeed-buddyFeed {
+  box-shadow: none !important;
+}
+/* standardizing text color */
 .main-buddyFeed-activityMetadata .main-buddyFeed-username a,
 .main-buddyFeed-activityMetadata .main-buddyFeed-artistAndTrackName a {
   color: var(--spice-text);
@@ -70,13 +76,19 @@ a.link-subtle.main-navBar-navBarLink svg,
   position: relative;
 } */
 .main-navBar-navBarItem .collection-icon,
-.main-navBar-navBarItem .search-icon {
+.main-navBar-navBarItem .search-icon,
+.main-navBar-navBarItem .home-icon {
   color: var(--spice-text);
   width: 20px;
   height: 20px;
 }
-.main-navBar-navBarItem .main-navBar-navBarLinkActive .collection-active-icon {
+.main-navBar-navBarItem .collection-active-icon,
+.main-navBar-navBarItem .search-active-icon,
+.main-navBar-navBarItem .home-active-icon {
   color: var(--spice-text);
+}
+/* add playlist svg size */
+.main-createPlaylistButton-createPlaylistIcon svg {
   width: 20px;
   height: 20px;
 }
