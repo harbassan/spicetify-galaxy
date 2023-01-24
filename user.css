@@ -19,13 +19,12 @@ BUDDY FEED
 .main-buddyFeed-buddyFeedRoot {
   background: linear-gradient(rgba(var(--spice-rgb-sidebar), 0.3) 50%, transparent) !important;
   border-radius: 0 !important;
-  margin-top: calc(-48px - 16px);
 }
-.nav-alt .main-buddyFeed-friendsFeedContainer {
-  padding-top: 25px;
+.spotify__os--is-windows .main-buddyFeed-content {
+  margin-top: 0;
 }
 .main-buddyFeed-friendsFeedContainer {
-  padding-top: calc(16px + 48px);
+  padding-top: 24px;
   box-shadow: none !important;
 }
 /* for older spotify vers */
@@ -307,6 +306,7 @@ footer.main-nowPlayingBar-container {
 }
 .main-nowPlayingBar-right {
   width: 280px;
+  margin-left: 20px;
 }
 
 .main-nowPlayingBar-left {
@@ -323,6 +323,17 @@ button.main-playPauseButton-button {
 .main-playPauseButton-button svg {
   height: 20px;
   width: 21px;
+}
+/* progress bar moves smoothly */
+.x-progressBar-fillColor {
+  transition: transform 1s linear;
+}
+.progress-bar__slider {
+  transition: left 1s linear;
+}
+.playback-progressbar-isInteractive .DuvrswZugGajIFNXObAr .x-progressBar-fillColor,
+.playback-progressbar-isInteractive .DuvrswZugGajIFNXObAr .progress-bar__slider {
+  transition: none;
 }
 /*
 -------------------
@@ -671,13 +682,17 @@ span.toggle.enabled {
 }
 /*
 -------------------
-NEW HOME LAYOUT
+NEW HOME LAYOUT     // .nav-alt is for prev versions //
 -------------------
 */
+.main-topBar-topBarContainer.Root__fixed-top-bar {
+  height: 64px;
+}
 .main-topBar-topBarContainer.Root__fixed-top-bar:nth-last-child(6) {
   grid-template-columns: var(--nav-bar-width) auto 0;
 }
-a.zuf9gCpkf86KkzzCtkJN {
+a.zuf9gCpkf86KkzzCtkJN,
+a.main-topBar-navLink {
   background-color: rgba(var(--spice-rgb-shadow), 0.7);
   height: 32px;
   border-radius: 8px;
@@ -686,22 +701,33 @@ a.zuf9gCpkf86KkzzCtkJN {
   width: 32px;
   align-items: center;
 }
-.zuf9gCpkf86KkzzCtkJN span.Type__TypeElement-sc-goli3j-0.eRYMpa {
+.zuf9gCpkf86KkzzCtkJN span.Type__TypeElement-sc-goli3j-0.eRYMpa,
+.main-topBar-navLink span.Type__TypeElement-sc-goli3j-0.eRYMpa {
   display: none;
 }
 .main-topBar-sectionWrapper.main-topBar-left {
   padding-left: calc(var(--nav-bar-width) + 16px) !important;
 }
 .zuf9gCpkf86KkzzCtkJN svg.home-icon,
-.zuf9gCpkf86KkzzCtkJN svg.home-active-icon {
+.zuf9gCpkf86KkzzCtkJN svg.home-active-icon,
+.main-topBar-navLink svg.home-icon,
+.main-topBar-navLink svg.home-active-icon {
   width: 18px;
   height: 18px;
 }
+.Root__right-sidebar:nth-child(6) .main-buddyFeed-friendsFeedContainer,
+.nav-alt .main-buddyFeed-friendsFeedContainer {
+  padding-top: 24px;
+}
+.Root__right-sidebar:nth-child(6),
+.nav-alt .Root__right-sidebar {
+  margin-top: -64px;
+}
+.Root__nav-bar:nth-child(3),
 .nav-alt .Root__nav-bar {
   margin-top: -64px;
-  padding-top: calc(48px - 12px);
 }
-.nav-alt .main-coverSlotCollapsed-container.main-coverSlotCollapsed-navAltContainer {
+.main-coverSlotCollapsed-container.main-coverSlotCollapsed-navAltContainer {
   transform: none;
 }
 .main-topBar-searchBar input.x-searchInput-searchInputInput {
@@ -711,7 +737,8 @@ a.zuf9gCpkf86KkzzCtkJN {
   padding-left: 42px;
   color: var(--spice-text) !important;
 }
-a.zuf9gCpkf86KkzzCtkJN:hover {
+a.zuf9gCpkf86KkzzCtkJN:hover,
+a.main-topBar-navLink:hover {
   background-color: rgba(var(--spice-rgb-shadow), 0.7);
   color: var(--spice-text);
 }
@@ -734,7 +761,7 @@ a.zuf9gCpkf86KkzzCtkJN:hover {
 }
 /* hide buddy feed add friends background */
 .SQHCRmgNjRywo1Lt7rP3 {
-  background: transparent;
+  background: transparent !important;
 }
 /* other */
 span.x-toggle-indicator {
