@@ -4,6 +4,8 @@
     return;
   }
 
+  console.log("galaxy running");
+
   Object.keys(localStorage).forEach(item => {
     if (item.includes("galaxy:tempPlaylistBg")) localStorage.removeItem(item);
   });
@@ -18,7 +20,11 @@
     const data = Spicetify.Player.data.track.metadata;
     setBg(data.image_xlarge_url);
     const dataHigh = await Spicetify.CosmosAsync.get(`https://api.deezer.com/search?q=artist:"${data.album_artist_name}" album:"${data.album_title}"`);
-    setBg(dataHigh.data[0].album.cover_xl);
+    try {
+      setBg(dataHigh.data[0].album.cover_xl);
+    } catch {
+      console.log("galaxy: unable to fetch image from deezer api");
+    }
   }
 
   async function fetchAlbumImage(uid) {
@@ -27,7 +33,11 @@
     const data = await Spicetify.CosmosAsync.get(`https://api.spotify.com/v1/albums/${uid}`);
     setBg(data.images[0].url);
     const dataHigh = await Spicetify.CosmosAsync.get(`https://api.deezer.com/search?q=artist:"${data.artists[0].name}" album:"${data.name}"`);
-    setBg(dataHigh.data[0].album.cover_xl);
+    try {
+      setBg(dataHigh.data[0].album.cover_xl);
+    } catch {
+      console.log("galaxy: unable to fetch image from deezer api");
+    }
   }
 
   async function fetchArtistImage(uid) {
