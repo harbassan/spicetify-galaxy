@@ -14,6 +14,7 @@
   let startImage = localStorage.getItem("galaxy:startupBg") || defImage;
 
   async function fetchCurrTrackAlbumImage() {
+    console.log("galaxy: fetching current track album image...");
     const data = Spicetify.Player.data.track.metadata;
     setBg(data.image_xlarge_url);
     const dataHigh = await Spicetify.CosmosAsync.get(`https://api.deezer.com/search?q=artist:"${data.album_artist_name}" album:"${data.album_title}"`);
@@ -21,15 +22,16 @@
   }
 
   async function fetchAlbumImage(uid) {
+    console.log("galaxy: fetching album image...");
     if (useHomeEverywhere) return;
     const data = await Spicetify.CosmosAsync.get(`https://api.spotify.com/v1/albums/${uid}`);
     setBg(data.images[0].url);
     const dataHigh = await Spicetify.CosmosAsync.get(`https://api.deezer.com/search?q=artist:"${data.artists[0].name}" album:"${data.name}"`);
-    console.log(data);
     setBg(dataHigh.data[0].album.cover_xl);
   }
 
   async function fetchArtistImage(uid) {
+    console.log("galaxy: fetching artist image...");
     const bannerSect = document.querySelector(".under-main-view");
     const observer = new MutationObserver(mutation_list => {
       for (mutation of mutation_list) {
@@ -48,6 +50,7 @@
   }
 
   async function fetchPlaylistImage(uid) {
+    console.log("galaxy: fetching default playlist image...");
     const uri = Spicetify.URI.playlistV2URI(uid);
     Spicetify.CosmosAsync.get(`sp://core-playlist/v1/playlist/${uri.toURI()}/metadata`, {
       policy: { picture: true },
@@ -63,10 +66,12 @@
   function getPlaylistImage(uid) {
     if (useHomeEverywhere) return;
     if (localStorage.getItem("galaxy:playlistBg:" + uid)) {
+      console.log("galaxy: fetching stored playlist image...");
       setBg(localStorage.getItem("galaxy:playlistBg:" + uid));
       return;
     }
     if (localStorage.getItem("galaxy:tempPlaylistBg:" + uid)) {
+      console.log("galaxy: fetching temporarily stored playlist image...");
       setBg(localStorage.getItem("galaxy:tempPlaylistBg:" + uid));
       return;
     }
