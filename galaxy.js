@@ -61,8 +61,8 @@
 
   async function fetchPlaylistImage(uid) {
     console.log("galaxy: fetching default playlist image...");
-    const uri = Spicetify.URI.playlistV2URI(uid);
-    Spicetify.CosmosAsync.get(`sp://core-playlist/v1/playlist/${uri.toURI()}/metadata`, {
+    const uri = `spotify:playlist:${uid}`;
+    Spicetify.CosmosAsync.get(`sp://core-playlist/v1/playlist/${uri}/metadata`, {
       policy: { picture: true },
     }).then(data => {
       setBg(data.metadata.picture);
