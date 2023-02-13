@@ -427,6 +427,35 @@ span.x-searchInput-searchInputSearchIcon {
 .main-topBar-searchBar:hover span.x-searchInput-searchInputSearchIcon {
   color: var(--spice-text);
 }
+/* stop "top result" text and search results cards from intersecting with search options */
+.main-gridContainer-gridContainer.search-searchResult-searchResultGrid,
+.bCoyoXohuLs0f6urF2PD {
+  margin-top: 76px;
+}
+/* search bar x button */
+.x-searchInput-searchInputClearButton {
+  color: rgba(var(--spice-rgb-text), 0.7);
+}
+.x-searchInput-searchInputClearButton:hover {
+  color: var(--spice-rgb-text);
+}
+/* style search options  */
+span.ChipInner__ChipInnerComponent-sc-1ly6j4j-0 {
+  background-color: rgba(var(--spice-rgb-shadow), 0.7);
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  color: rgba(var(--spice-rgb-text), 0.7);
+  font-weight: 700 !important;
+}
+.Chip__ChipComponent-sc-ry3uox-0:hover > .ChipInner__ChipInnerComponent-sc-1ly6j4j-0 {
+  background-color: rgba(var(--spice-rgb-shadow), 0.7) !important;
+  color: var(--spice-text);
+}
+.Chip__ChipComponent-sc-ry3uox-0[aria-checked="true"] > .ChipInner__ChipInnerComponent-sc-1ly6j4j-0 {
+  color: var(--spice-text);
+}
 /*
 -------------------
 HIDE BACKGROUNDS
