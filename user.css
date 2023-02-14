@@ -635,6 +635,10 @@ img.bg-main-image {
 .lyrics-lyrics-background {
   display: none;
 }
+/* blur background when option is enabled */
+.bg-main-shadow.blur-enabled {
+  backdrop-filter: blur(8px);
+}
 /*
 -------------------
 HOME POPUP 
@@ -650,7 +654,7 @@ div[aria-label="Galaxy Settings"] .main-trackCreditsModal-mainSection {
   padding: 24px;
 }
 .main-trackCreditsModal-container {
-  max-height: 520px;
+  max-height: 620px;
 }
 .main-trackCreditsModal-originalCredits {
   padding-bottom: 0;
@@ -708,6 +712,13 @@ span.toggle.enabled {
 }
 #home-save:hover {
   transform: scale(1.05);
+}
+/* report issue link */
+.issue-button {
+  display: block;
+  margin-top: -25px;
+  font-size: 0.8em;
+  width: fit-content;
 }
 /*
 -------------------

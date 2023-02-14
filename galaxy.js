@@ -10,9 +10,48 @@
     if (item.includes("galaxy:tempPlaylistBg")) localStorage.removeItem(item);
   });
 
+  function parseOptions(page) {
+    const blurHomeBackground = JSON.parse(localStorage.getItem("blurHomeBackground"));
+    if (blurHomeBackground && page === "/") {
+      document.querySelector(".bg-main-shadow").classList.toggle("blur-enabled", true);
+    } else {
+      document.querySelector(".bg-main-shadow").classList.toggle("blur-enabled", false);
+    }
+
+    const useCurrSongAsHome = JSON.parse(localStorage.getItem("useCurrentSongAsHome"));
+    if (useCurrSongAsHome && page === "/") {
+      fetchCurrTrackAlbumImage();
+    } else if (!useCurrSongAsHome && page === "/") {
+      setBg(startImage);
+    }
+
+    const useHomeEverywhere = JSON.parse(localStorage.getItem("useHomeEverywhere"));
+    if (useHomeEverywhere && !page.includes("/artist/")) {
+      useCurrSongAsHome ? fetchCurrTrackAlbumImage() : setBg(startImage);
+    }
+
+    const blurAllBackgrounds = JSON.parse(localStorage.getItem("blurAllBackgrounds"));
+    if (blurAllBackgrounds && page !== "/") {
+      document.querySelector(".bg-main-shadow").classList.toggle("blur-enabled", true);
+    }
+
+    const showHeaderImage = JSON.parse(localStorage.getItem("showHeaderImage"));
+    if (showHeaderImage && !document.querySelector("style[galaxy-showHeaderImage]")) {
+      const style = document.createElement("style");
+      style.setAttribute("galaxy-showHeaderImage", "");
+      style.innerHTML = `
+      .playlist-playlist-playlistImageContainer,
+      .main-entityHeader-imageContainer { display: block; } 
+      .main-entityHeader-headerText { align-items: start; }
+      .main-entityHeader-title { text-align: left; }
+      .main-entityHeader-shadow { box-shadow: none;}`;
+      document.body.append(style);
+    } else if (!showHeaderImage && document.querySelector("style[galaxy-showHeaderImage]")) {
+      document.querySelector("style[galaxy-showHeaderImage]").remove();
+    }
+  }
+
   const defImage = `https://github.com/harbassan/spicetify-galaxy/blob/main/assets/default_bg.jpg?raw=true`;
-  const useCurrSongAsHome = JSON.parse(localStorage.getItem("useCurrentSongAsHome"));
-  const useHomeEverywhere = JSON.parse(localStorage.getItem("useHomeEverywhere"));
   let startImage = localStorage.getItem("galaxy:startupBg") || defImage;
 
   async function fetchCurrTrackAlbumImage() {
@@ -20,16 +59,11 @@
     const data = Spicetify.Player.data.track.metadata;
     setBg(data.image_xlarge_url);
     const dataHigh = await Spicetify.CosmosAsync.get(`https://api.deezer.com/search?q=artist:"${data.album_artist_name}" album:"${data.album_title}"`);
-    try {
-      setBg(dataHigh.data[0].album.cover_xl);
-    } catch {
-      console.log("galaxy: unable to fetch image from deezer api");
-    }
+    setBg(dataHigh.data[0].album.cover_xl);
   }
 
   async function fetchAlbumImage(uid) {
     console.log("galaxy: fetching album image...");
-    if (useHomeEverywhere) return;
     const data = await Spicetify.CosmosAsync.get(`https://api.spotify.com/v1/albums/${uid}`);
     setBg(data.images[0].url);
     const dataHigh = await Spicetify.CosmosAsync.get(`https://api.deezer.com/search?q=artist:"${data.artists[0].name}" album:"${data.name}"`);
@@ -74,7 +108,6 @@
   }
 
   function getPlaylistImage(uid) {
-    if (useHomeEverywhere) return;
     if (localStorage.getItem("galaxy:playlistBg:" + uid)) {
       console.log("galaxy: fetching stored playlist image...");
       setBg(localStorage.getItem("galaxy:playlistBg:" + uid));
@@ -202,7 +235,6 @@
   bgContainer.className = "bg-main-container";
   bgContainer.innerHTML = `</div><div class="bg-image-container"><img class="bg-main-image"></div><div class="bg-main-shadow">`;
   const bgImage = bgContainer.children[0].children[0];
-  useCurrSongAsHome ? fetchCurrTrackAlbumImage() : setBg(startImage);
   document.body.prepend(bgContainer);
 
   // move user profile icon to navbar
@@ -253,6 +285,8 @@
             <div class="main-editImageButton-icon icon">
               <svg role="img" height="48" width="48" aria-hidden="true" viewBox="0 0 24 24" class="Svg-sc-1bi12j5-0 EQkJl"><path d="M17.318 1.975a3.329 3.329 0 114.707 4.707L8.451 20.256c-.49.49-1.082.867-1.735 1.103L2.34 22.94a1 1 0 01-1.28-1.28l1.581-4.376a4.726 4.726 0 011.103-1.735L17.318 1.975zm3.293 1.414a1.329 1.329 0 00-1.88 0L5.159 16.963c-.283.283-.5.624-.636 1l-.857 2.372 2.371-.857a2.726 2.726 0 001.001-.636L20.611 5.268a1.329 1.329 0 000-1.879z"></path></svg><span class="Type__TypeElement-goli3j-0 gAmaez main-editImageButton-copy">Choose photo</span></div></button></div></div><div class="main-playlistEditDetailsModal-imageDropDownContainer"><button class="main-playlistEditDetailsModal-imageDropDownButton" type="button"><svg role="img" height="16" width="16" viewBox="0 0 16 16" class="Svg-sc-1bi12j5-0 EQkJl"><path d="M1.47 1.47a.75.75 0 011.06 0L8 6.94l5.47-5.47a.75.75 0 111.06 1.06L9.06 8l5.47 5.47a.75.75 0 11-1.06 1.06L8 9.06l-5.47 5.47a.75.75 0 01-1.06-1.06L6.94 8 1.47 2.53a.75.75 0 010-1.06z"></path></svg><span class="hidden-visually">Edit photo</span></button></div></div>`;
 
+    const optionList = document.createElement("div");
+
     function createOption(name, desc, defVal) {
       const optionRow = document.createElement("div");
       optionRow.classList.add("galaxyOptionRow");
@@ -263,14 +297,13 @@
           <span class="toggle"></span>
         </span>
       </button>`;
+      optionRow.setAttribute("name", name);
       optionRow.querySelector("button").addEventListener("click", () => {
         optionRow.querySelector(".toggle").classList.toggle("enabled");
-        localStorage.setItem(name, optionRow.querySelector(".toggle").classList.contains("enabled"));
       });
       const isEnabled = JSON.parse(localStorage.getItem(name)) ?? defVal;
-      console.log(isEnabled);
       optionRow.querySelector(".toggle").classList.toggle("enabled", isEnabled);
-      content.append(optionRow);
+      optionList.append(optionRow);
     }
 
     const srcInput = document.createElement("input");
@@ -282,6 +315,11 @@
 
     createOption("useCurrentSongAsHome", "Use currently playing song as home bg", false);
     createOption("useHomeEverywhere", "Use the home bg everywhere", false);
+    createOption("blurHomeBackground", "Blur the home bg", false);
+    createOption("blurAllBackgrounds", "Blur the bg on other pages", false);
+    createOption("showHeaderImage", "Show the playlist/album img in header", false);
+
+    content.append(optionList);
 
     img = content.querySelector("img");
     img.src = localStorage.getItem("galaxy:startupBg") || defImage;
@@ -291,30 +329,40 @@
     };
     const removeButton = content.querySelector(".main-playlistEditDetailsModal-imageDropDownButton");
     removeButton.onclick = () => {
-      localStorage.removeItem("galaxy:startupBg");
       content.querySelector("img").src = defImage;
-      startImage = defImage;
-      if (!useCurrSongAsHome) setBg(startImage);
     };
 
-    const save = document.createElement("button");
-    save.id = "home-save";
-    save.innerHTML = "Save";
+    const saveButton = document.createElement("button");
+    saveButton.id = "home-save";
+    saveButton.innerHTML = "Save";
 
-    save.addEventListener("click", () => {
-      if (srcInput.value) {
-        console.log(srcInput.value);
-        startImage = srcInput.value;
-        localStorage.setItem("galaxy:startupBg", srcInput.value);
-      }
-      if (!useCurrSongAsHome) setBg(startImage);
+    saveButton.addEventListener("click", () => {
+      // update changed bg image
+      startImage = srcInput.value || content.querySelector("img").src;
+      localStorage.setItem("galaxy:startupBg", startImage);
+
+      // save options to local storage
+      [...optionList.children].forEach(option => {
+        localStorage.setItem(option.getAttribute("name"), option.querySelector(".toggle").classList.contains("enabled"));
+        console.log(`galaxy: ${option.getAttribute("name")} set to ${option.querySelector(".toggle").classList.contains("enabled")}`);
+      });
+      parseOptions("/");
     });
 
-    content.append(save);
+    content.append(saveButton);
+
+    const issueButton = document.createElement("a");
+    issueButton.classList.add("issue-button");
+    issueButton.innerHTML = "Report Issue";
+    issueButton.href = "https://github.com/harbassan/spicetify-galaxy";
+    content.append(issueButton);
 
     Spicetify.PopupModal.display({ title: "Galaxy Settings", content: content });
   });
   homeEdit.element.classList.toggle("hidden", false);
+
+  // startup parse
+  parseOptions("/");
 
   // pages on which to not dim background
   const notDimPages = ["/playlist/", "/artist/", "/album/", "/folder/", "/collection/tracks"];
@@ -326,7 +374,7 @@
   // on page change
   Spicetify.Platform.History.listen(({ pathname }) => {
     const [, type, uid] = pathname.split("/");
-    const curSong = Spicetify.Player.data.track.metadata.image_xlarge_url;
+
     isDim = !(notDimPages.some(page => pathname.includes(page)) || pathname == "/");
 
     // dim pages without art
@@ -351,17 +399,20 @@
         break;
       case "album":
         fetchAlbumImage(uid);
+        break;
+      case "lyrics":
+        fetchCurrTrackAlbumImage();
     }
 
-    if (pathname === "/" || (useHomeEverywhere && type != "artist")) useCurrSongAsHome ? fetchCurrTrackAlbumImage() : setBg(startImage);
-    if (type === "lyrics") fetchCurrTrackAlbumImage();
+    parseOptions(pathname);
   });
 
   // change home and lyrics page background on songchange
   Spicetify.Player.addEventListener("songchange", () => {
     const pathname = Spicetify.Platform.History.location.pathname;
-    if (pathname == "/lyrics" || (pathname == "/" && useCurrSongAsHome) || (useHomeEverywhere && useCurrSongAsHome && !pathname.includes("/artist/"))) {
+    if (pathname == "/lyrics") {
       fetchCurrTrackAlbumImage();
     }
+    parseOptions(pathname);
   });
 })();
