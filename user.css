@@ -428,8 +428,8 @@ span.x-searchInput-searchInputSearchIcon {
   color: var(--spice-text);
 }
 /* stop "top result" text and search results cards from intersecting with search options */
-.main-gridContainer-gridContainer.search-searchResult-searchResultGrid,
-.bCoyoXohuLs0f6urF2PD {
+.Root__main-view:nth-child(5) .main-gridContainer-gridContainer.search-searchResult-searchResultGrid,
+.Root__main-view:nth-child(5) .bCoyoXohuLs0f6urF2PD {
   margin-top: 76px;
 }
 /* search bar x button */
@@ -455,6 +455,9 @@ span.ChipInner__ChipInnerComponent-sc-1ly6j4j-0 {
 }
 .Chip__ChipComponent-sc-ry3uox-0[aria-checked="true"] > .ChipInner__ChipInnerComponent-sc-1ly6j4j-0 {
   color: var(--spice-text);
+}
+.search-searchCategory-wrapper {
+  justify-content: center;
 }
 /*
 -------------------
@@ -519,6 +522,10 @@ button.x-filterBox-expandButton {
 .x-filterBox-expandButton:hover {
   background-color: rgba(var(--spice-rgb-shadow), 0.7);
   border-radius: 25%;
+}
+img.main-entityHeader-image,
+.main-editImageButton-overlay {
+  border-radius: 5px;
 }
 /*
 -------------------
