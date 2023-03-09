@@ -12,11 +12,13 @@
 
 ### Customisation
 
-To change the home background image and playlist background images click the edit button which shows up on the top left of the page. This will open a menu where you can input the image, either by entering the url (the recommended option) or choosing a locally downloaded image. There is also an option on the home page to use the currently playing song as the background.
+To change the home background image and playlist background images click the edit button which shows up on the top left of the page. This will open a menu where you can input the image, either by entering the url (the recommended option) or choosing a locally downloaded image. If there is no custom image set for a playlist it will default to the playlist cover image.
+Note that if you select locally downloaded images for the backgrounds, there will be a limited space. Therefore using urls is much better.
 
-Note that if you select locally downloaded images for the backgrounds, there will be a limited space. Therefore using urls is much better, and a good way to do this is by hosting the images on a cloud storage service and then inputing the urls.
+There are multiple options on the home page (top left corner) which provide much more customisation overall. These include adding blur, allowing use of the currently playing songs as backgrounds, and allowing you to use a single image across all of the app.
 
-If there is no custom image set for a playlist it will default to the cover image.
+![preview](preview_custom.png)
+![preview](preview_custom2.png)
 
 Go into your theme folder and open either:
 
