@@ -177,6 +177,7 @@ button.main-userWidget-box {
   width: 32px;
   height: 32px;
   -webkit-app-region: no-drag;
+  justify-content: unset;
 }
 /* discog sort buttons */
 .button-container {
@@ -415,7 +416,7 @@ SEARCH PAGE
 */
 .fVB_YDdnaDlztX7CcWTA,
 .search-searchCategory-SearchCategory {
-  background: none;
+  background: none !important;
 }
 [fade="top"] .search-searchCategory-SearchCategory,
 [fade="full"] .search-searchCategory-SearchCategory {

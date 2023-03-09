@@ -7,36 +7,45 @@
   console.log("galaxy running");
 
   Object.keys(localStorage).forEach(item => {
-    if (item.includes("galaxy:tempPlaylistBg")) localStorage.removeItem(item);
+    if (item.includes("galaxy:temp")) localStorage.removeItem(item);
   });
 
-  function parseOptions(page) {
-    const blurHomeBackground = JSON.parse(localStorage.getItem("blurHomeBackground"));
-    if (blurHomeBackground && page === "/") {
-      document.querySelector(".bg-main-shadow").classList.toggle("blur-enabled", true);
+  const config = {}
+
+  function parseOptions() {
+    config.blurHomeBackground = JSON.parse(localStorage.getItem("blurHomeBackground"));
+    config.useCurrSongAsHome = JSON.parse(localStorage.getItem("useCurrentSongAsHome"));
+    config.useHomeEverywhere = JSON.parse(localStorage.getItem("useHomeEverywhere"));
+    config.blurAllBackgrounds = JSON.parse(localStorage.getItem("blurAllBackgrounds"));
+    config.showHeaderImage = JSON.parse(localStorage.getItem("showHeaderImage"));
+  }
+  parseOptions()
+
+  let isDim = false;
+
+  function loopOptions(page) {
+    if (page === "/") {
+      if (config.blurHomeBackground) {
+        document.querySelector(".bg-main-shadow").classList.toggle("blur-enabled", true);
+      } else {
+        document.querySelector(".bg-main-shadow").classList.toggle("blur-enabled", false);
+      }
+      if (config.useCurrSongAsHome) {
+        fetchCurrTrackAlbumImage();
+      } else {
+        setBg(startImage);
+      }
     } else {
-      document.querySelector(".bg-main-shadow").classList.toggle("blur-enabled", false);
+      if (config.blurAllBackgrounds) {
+        document.querySelector(".bg-main-shadow").classList.toggle("blur-enabled", true);
+      } else {
+        document.querySelector(".bg-main-shadow").classList.toggle("blur-enabled", false);
+      }
+      if (config.useHomeEverywhere) {
+        config.useCurrSongAsHome ? fetchCurrTrackAlbumImage() : setBg(startImage);
+      }
     }
-
-    const useCurrSongAsHome = JSON.parse(localStorage.getItem("useCurrentSongAsHome"));
-    if (useCurrSongAsHome && page === "/") {
-      fetchCurrTrackAlbumImage();
-    } else if (!useCurrSongAsHome && page === "/") {
-      setBg(startImage);
-    }
-
-    const useHomeEverywhere = JSON.parse(localStorage.getItem("useHomeEverywhere"));
-    if (useHomeEverywhere && !page.includes("/artist/")) {
-      useCurrSongAsHome ? fetchCurrTrackAlbumImage() : setBg(startImage);
-    }
-
-    const blurAllBackgrounds = JSON.parse(localStorage.getItem("blurAllBackgrounds"));
-    if (blurAllBackgrounds && page !== "/") {
-      document.querySelector(".bg-main-shadow").classList.toggle("blur-enabled", true);
-    }
-
-    const showHeaderImage = JSON.parse(localStorage.getItem("showHeaderImage"));
-    if (showHeaderImage && !document.querySelector("style[galaxy-showHeaderImage]")) {
+    if (config.showHeaderImage && !document.querySelector("style[galaxy-showHeaderImage]")) {
       const style = document.createElement("style");
       style.setAttribute("galaxy-showHeaderImage", "");
       style.innerHTML = `
@@ -46,9 +55,9 @@
       .main-entityHeader-title { text-align: left; }
       .main-entityHeader-shadow { box-shadow: none;}`;
       document.body.append(style);
-    } else if (!showHeaderImage && document.querySelector("style[galaxy-showHeaderImage]")) {
+    } else if (!config.showHeaderImage && document.querySelector("style[galaxy-showHeaderImage]")) {
       document.querySelector("style[galaxy-showHeaderImage]").remove();
-    }
+    } 
   }
 
   const defImage = `https://github.com/harbassan/spicetify-galaxy/blob/main/assets/default_bg.jpg?raw=true`;
@@ -57,18 +66,34 @@
   async function fetchCurrTrackAlbumImage() {
     console.log("galaxy: fetching current track album image...");
     const data = Spicetify.Player.data.track.metadata;
+    if (localStorage.getItem(`galaxy:tempAlbumImage:${data.album_uri.split(":")[2]}`)) {
+      setBg(localStorage.getItem(`galaxy:tempAlbumImage:${data.album_uri.split(":")[2]}`))
+      return
+    }
     setBg(data.image_xlarge_url);
-    const dataHigh = await Spicetify.CosmosAsync.get(`https://api.deezer.com/search?q=artist:"${data.album_artist_name}" album:"${data.album_title}"`);
-    setBg(dataHigh.data[0].album.cover_xl);
+    const dataHigh = await Spicetify.CosmosAsync.get(`https://api.deezer.com/search/album?q=artist:"${data.album_artist_name}" album:"${data.album_title}"`);
+    let album = dataHigh.data.find(e => e.title == data.name)
+    try {
+      setBg(album.cover_xl);
+      localStorage.setItem(`galaxy:tempAlbumImage:${uid}`, album.cover_xl)
+    } catch {
+      console.log("galaxy: unable to fetch image from deezer api");
+    }
   }
 
   async function fetchAlbumImage(uid) {
     console.log("galaxy: fetching album image...");
+    if (localStorage.getItem(`galaxy:tempAlbumImage:${uid}`)) {
+      setBg(localStorage.getItem(`galaxy:tempAlbumImage:${uid}`))
+      return
+    }
     const data = await Spicetify.CosmosAsync.get(`https://api.spotify.com/v1/albums/${uid}`);
     setBg(data.images[0].url);
-    const dataHigh = await Spicetify.CosmosAsync.get(`https://api.deezer.com/search?q=artist:"${data.artists[0].name}" album:"${data.name}"`);
+    const dataHigh = await Spicetify.CosmosAsync.get(`https://api.deezer.com/search/album?q=artist:"${data.artists[0].name}" album:"${data.name}"`);
+    let album = dataHigh.data.find(e => e.title == data.name)
     try {
-      setBg(dataHigh.data[0].album.cover_xl);
+      setBg(album.cover_xl);
+      localStorage.setItem(`galaxy:tempAlbumImage:${uid}`, album.cover_xl)
     } catch {
       console.log("galaxy: unable to fetch image from deezer api");
     }
@@ -186,7 +211,6 @@
         const save = popupContent.querySelector(".main-playlistEditDetailsModal-save button");
         save.addEventListener("click", () => {
           if (srcInput.value) {
-            console.log(srcInput.value);
             localStorage.setItem("galaxy:playlistBg:" + uid, srcInput.value);
           }
           getPlaylistImage(uid);
@@ -346,7 +370,8 @@
         localStorage.setItem(option.getAttribute("name"), option.querySelector(".toggle").classList.contains("enabled"));
         console.log(`galaxy: ${option.getAttribute("name")} set to ${option.querySelector(".toggle").classList.contains("enabled")}`);
       });
-      parseOptions("/");
+      parseOptions();
+      loopOptions("/")
     });
 
     content.append(saveButton);
@@ -362,18 +387,35 @@
   homeEdit.element.classList.toggle("hidden", false);
 
   // startup parse
-  parseOptions("/");
+  loopOptions("/");
 
   // pages on which to not dim background
   const notDimPages = ["/playlist/", "/artist/", "/album/", "/folder/", "/collection/tracks"];
 
-  let isDim = false;
 
   const bgImageWrapper = bgContainer.children[0];
 
   // on page change
   Spicetify.Platform.History.listen(({ pathname }) => {
     const [, type, uid] = pathname.split("/");
+
+    // change background images for certain pages
+    if (!config.useHomeEverywhere) {
+      switch (type) {
+        case "playlist":
+          getPlaylistImage(uid);
+          break;
+        case "album":
+          fetchAlbumImage(uid);
+          break;
+        case "artist":
+          fetchArtistImage(uid);
+          break;
+        case "lyrics":
+          fetchCurrTrackAlbumImage();
+      }
+      if (pathname === "/collection/tracks") fetchCurrTrackAlbumImage();
+    }
 
     isDim = !(notDimPages.some(page => pathname.includes(page)) || pathname == "/");
 
@@ -389,30 +431,15 @@
     playlistEdit.element.classList.toggle("hidden", type !== "playlist");
     homeEdit.element.classList.toggle("hidden", pathname !== "/");
 
-    // change background images for certain pages
-    switch (type) {
-      case "playlist":
-        getPlaylistImage(uid);
-        break;
-      case "artist":
-        fetchArtistImage(uid);
-        break;
-      case "album":
-        fetchAlbumImage(uid);
-        break;
-      case "lyrics":
-        fetchCurrTrackAlbumImage();
-    }
-
-    parseOptions(pathname);
+    loopOptions(pathname);
   });
 
   // change home and lyrics page background on songchange
   Spicetify.Player.addEventListener("songchange", () => {
     const pathname = Spicetify.Platform.History.location.pathname;
-    if (pathname == "/lyrics") {
+    if (pathname === "/lyrics" || pathname === "/collection/tracks") {
       fetchCurrTrackAlbumImage();
     }
-    parseOptions(pathname);
+    loopOptions(pathname);
   });
 })();
