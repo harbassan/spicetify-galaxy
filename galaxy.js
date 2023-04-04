@@ -72,7 +72,8 @@
     }
     setBg(data.image_xlarge_url);
     const dataHigh = await Spicetify.CosmosAsync.get(`https://api.deezer.com/search/album?q=artist:"${data.album_artist_name}" album:"${data.album_title}"`);
-    let album = dataHigh.data.find(e => e.title == data.name)
+    let album = dataHigh.data.find(e => e.title == data.album_title)
+    const uid = Spicetify.URI.fromString(data.album_uri).id
     try {
       setBg(album.cover_xl);
       localStorage.setItem(`galaxy:tempAlbumImage:${uid}`, album.cover_xl)
