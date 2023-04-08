@@ -438,7 +438,7 @@
   // change home and lyrics page background on songchange
   Spicetify.Player.addEventListener("songchange", () => {
     const pathname = Spicetify.Platform.History.location.pathname;
-    if (pathname === "/lyrics" || pathname === "/collection/tracks") {
+    if ((pathname === "/lyrics" || pathname === "/collection/tracks") && !config.useHomeEverywhere) {
       fetchCurrTrackAlbumImage();
     }
     loopOptions(pathname);
