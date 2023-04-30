@@ -262,14 +262,6 @@
   const bgImage = bgContainer.children[0].children[0];
   document.body.prepend(bgContainer);
 
-  // move user profile icon to navbar
-  waitForElement([".main-userWidget-box"], ([profMenu]) => {
-    const header = profMenu.parentElement;
-    const dest = document.querySelector(".main-navBar-navBar");
-    header.removeChild(profMenu);
-    dest.append(profMenu);
-  });
-
   // add fade and dimness effects to mainview scroll node
   waitForElement([".Root__main-view .os-viewport.os-viewport-native-scrollbars-invisible"], ([scrollNode]) => {
     scrollNode.addEventListener("scroll", () => {
