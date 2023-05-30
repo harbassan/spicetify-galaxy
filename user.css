@@ -10,43 +10,8 @@ html {
   left: 0;
   right: 0;
 }
-/*
--------------------
-BUDDY FEED
--------------------
-*/
-.Root__right-sidebar,
-.main-buddyFeed-buddyFeedRoot {
-  background: linear-gradient(rgba(var(--spice-rgb-sidebar), 0.3) 50%, transparent) !important;
-  border-radius: 0 !important;
-}
-.spotify__os--is-windows .main-buddyFeed-content {
-  margin-top: 0;
-}
-.main-buddyFeed-friendsFeedContainer {
-  padding-top: 24px;
-  box-shadow: none !important;
-}
-/* for older spotify vers */
-.main-buddyFeed-buddyFeed {
-  box-shadow: none !important;
-}
-/* standardizing text color */
-.main-buddyFeed-activityMetadata .main-buddyFeed-username a,
-.main-buddyFeed-activityMetadata .main-buddyFeed-artistAndTrackName a {
-  color: var(--spice-text);
-}
-/* make profile icons less visible */
-.KdxlBanhDJjzmHfqhP0X {
-  opacity: 0.8;
-}
-/* make "friend activity" title line up */
-.NdQkQZhcYIEcJnRdAYcQ {
-  padding-left: 12px;
-}
-.main-avatar-avatar:after {
-  background-color: var(--spice-text) !important;
-}
+
+
 /* 
 -------------------
 NAVIGATION BAR
@@ -164,20 +129,8 @@ TOP BAR
 .main-userWidget-box svg {
   display: none;
 }
-.main-userWidget-box figure.main-avatar-avatar,
-.main-userWidget-box figure.main-avatar-avatar div {
-  width: 32px !important;
-  height: 32px !important;
-}
-button.main-userWidget-box {
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  padding: 0;
-  width: 32px;
-  height: 32px;
-  -webkit-app-region: no-drag;
-  justify-content: unset;
+.RfdRTSGwulyQdDepLUTT .main-userWidget-displayName, .RfdRTSGwulyQdDepLUTT .main-userWidget-chevron {
+  display: none;
 }
 /* discog sort buttons */
 .button-container {
@@ -275,11 +228,6 @@ a.marketplace-tabBar-headerItemLink {
   align-items: center;
   color: rgba(var(--spice-rgb-text), 0.7);
 }
-.main-topBar-topbarContentWrapper.center {
-  position: absolute;
-  left: 150px;
-  right: 150px;
-}
 .main-topBar-topbarContentWrapper.center ul.queue-tabBar-header,
 .main-topBar-topbarContentWrapper.center ul.marketplace-tabBar-header,
 .main-topBar-topbarContentWrapper.center div.main-topBar-topbarContent {
@@ -302,7 +250,8 @@ footer.main-nowPlayingBar-container {
   flex-direction: row;
 }
 .main-trackInfo-container {
-  width: 100%;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 .main-nowPlayingBar-center {
   max-width: none;
@@ -315,9 +264,6 @@ footer.main-nowPlayingBar-container {
 
 .main-nowPlayingBar-left {
   width: 20%;
-}
-.Root__now-playing-bar {
-  padding-right: 10px;
 }
 button.main-playPauseButton-button {
   background: none;
@@ -338,6 +284,10 @@ button.main-playPauseButton-button {
 .playback-progressbar-isInteractive .DuvrswZugGajIFNXObAr .x-progressBar-fillColor,
 .playback-progressbar-isInteractive .DuvrswZugGajIFNXObAr .progress-bar__slider {
   transition: none;
+}
+/* connect bar */
+.main-connectBar-connectBar {
+  border-radius: 0;
 }
 /*
 -------------------
@@ -449,7 +399,6 @@ span.ChipInner__ChipInnerComponent-sc-1ly6j4j-0 {
   display: flex;
   align-items: center;
   color: rgba(var(--spice-rgb-text), 0.7);
-  font-weight: 700 !important;
 }
 .Chip__ChipComponent-sc-ry3uox-0:hover > .ChipInner__ChipInnerComponent-sc-1ly6j4j-0 {
   background-color: rgba(var(--spice-rgb-shadow), 0.7) !important;
@@ -485,6 +434,13 @@ HIDE BACKGROUNDS
 PLAYLIST PAGE
 -------------------
 */
+
+/* remove main play button background */
+.ButtonInner-sc-14ud5tc-0.ButtonInner-lg-iconOnly.encore-bright-accent-set {
+  background: none;
+  color: white;
+}
+
 .playlist-playlist-playlistImageContainer {
   display: none;
 }
@@ -794,9 +750,6 @@ a.main-topBar-navLink {
 .nav-alt .Root__nav-bar {
   margin-top: -64px;
 }
-.main-coverSlotCollapsed-container.main-coverSlotCollapsed-navAltContainer {
-  transform: none;
-}
 .main-topBar-searchBar input.x-searchInput-searchInputInput {
   background-color: rgba(var(--spice-rgb-shadow), 0.7);
   height: 32px;
@@ -832,4 +785,138 @@ span.x-toggle-indicator {
 }
 span.x-toggle-indicatorWrapper {
   background-color: var(--spice-button) !important;
+}
+
+/*
+-------------------
+YOUR LIBRARY X
+-------------------
+*/
+
+.nav-ylx .main-yourLibraryX-entryPoints {
+  background: none;
+}
+
+/* fix spacing for 'your library' button */
+.Wrapper-md-leading {
+  margin-inline-end: 20px;
+}
+
+/* remove small button hover effects */
+.main-yourLibraryX-iconOnly:hover {
+  background-color: inherit;
+}
+.search-searchCategory-carouselButton:hover {
+  background-color: inherit;
+}
+
+/* remove top-container padding */
+.nav-ylx .Root__top-container {
+  padding: 0 !important;
+}
+.nav-ylx .main-navBar-mainNav {
+  padding-top: 25px;
+}
+
+/* font size and weight */
+.nav-ylx span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type {
+  font-size: 0.875rem;
+  line-height: 1rem;
+  font-weight: 700;
+}
+button.main-yourLibraryX-button {
+  font-size: 0.875rem;
+  line-height: 1rem;
+  font-weight: 700;
+}
+
+/* next arrow on ylx type carousel*/
+button.search-searchCategory-carouselButton {
+  background: none;
+}
+
+/* remove ylx box-shadow */
+.main-yourLibraryX-isScrolled {
+  box-shadow: none;
+}
+
+/* remove hover effects on ylx items */
+.BoxComponent-group-tinted-isInteractive-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px::after {
+  visibility: hidden;
+}
+.BoxComponent-group-naked-isInteractive-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px::after {
+  visibility: hidden;
+}
+.BoxComponent-group-tinted-isInteractive-hasFocus-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px::after {
+  visibility: hidden;
+}
+
+/* add ylx item selected gradient effect */
+.BoxComponent-group-tinted-isInteractive-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px,
+.Box-group-tinted-isInteractive-hasFocus-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px,
+.BoxComponent-group-tinted-isInteractive-hasFocus-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px {
+  background: linear-gradient(90deg, transparent 0%, rgba(var(--spice-rgb-selected-row), 0.07) 30%, rgba(var(--spice-rgb-selected-row), 0.07) 60%, transparent 100%);
+}
+
+/* add selected page indicator */
+.link-subtle.main-yourLibraryX-navLink::before {
+  content: "";
+  width: 3px;
+  height: 0;
+  background-color: var(--spice-text);
+  margin-left: -24px;
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+}
+.link-subtle.main-yourLibraryX-navLinkActive::before {
+  height: 80% !important;
+}
+.main-yourLibraryX-navLink {
+  position: relative;
+}
+
+/* add scroll fade to ylx and right sidebar */
+.Root__nav-bar [fade="top"],
+.Root__nav-right-sidebar [fade="top"] {
+  -webkit-mask-image: linear-gradient(transparent 0%, rgba(0, 0, 0, 1) 20%);
+}
+.Root__nav-bar [fade="full"], 
+.Root__nav-right-sidebar [fade="full"] {
+  -webkit-mask-image: linear-gradient(transparent 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, transparent 100%);
+}
+
+/*
+-------------------
+RIGHT SIDEBAR
+-------------------
+*/
+
+/* set transparent background */
+.main-nowPlayingView-section {
+  background: none;
+}
+.Root__nav-right-sidebar aside {
+  background: none;
+}
+
+/* add top padding */
+.spotify__os--is-windows .nav-ylx .main-buddyFeed-content {
+  padding-top: 24px;
+}
+
+/* set transparent background for section containers */
+.Root__nav-right-sidebar {
+  background: linear-gradient(rgba(var(--spice-rgb-sidebar), 0.3) 50%, transparent) !important;
+}
+
+/* fix header padding */
+.main-buddyFeed-header {
+  padding-left: 0 !important;
+}
+
+/* now playing view link hovers */
+.uvIvZ4XqfEFs88BAPaI8:focus-within, .uvIvZ4XqfEFs88BAPaI8:hover,
+.artist-artistOffers-item:focus-within, .artist-artistOffers-item:hover,
+.main-nowPlayingView-queueItem:focus-within, .main-nowPlayingView-queueItem:hover {
+  background: linear-gradient(90deg, transparent 0%, rgba(var(--spice-rgb-selected-row), 0.07) 30%, rgba(var(--spice-rgb-selected-row), 0.07) 60%, transparent 100%);
 }

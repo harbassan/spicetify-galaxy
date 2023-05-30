@@ -262,14 +262,6 @@
   const bgImage = bgContainer.children[0].children[0];
   document.body.prepend(bgContainer);
 
-  // move user profile icon to navbar
-  waitForElement([".main-userWidget-box"], ([profMenu]) => {
-    const header = profMenu.parentElement;
-    const dest = document.querySelector(".main-navBar-navBar");
-    header.removeChild(profMenu);
-    dest.append(profMenu);
-  });
-
   // add fade and dimness effects to mainview scroll node
   waitForElement([".Root__main-view .os-viewport.os-viewport-native-scrollbars-invisible"], ([scrollNode]) => {
     scrollNode.addEventListener("scroll", () => {
@@ -279,6 +271,34 @@
           0.75 - scrollNode.scrollTop / 1000 < 0.3 ? 0.3 : 0.75 - scrollNode.scrollTop / 1000
         }) 0px, rgba(0, 0, 0, 0.1) 90%)`;
       }
+      // fade
+      if (scrollNode.scrollTop == 0) {
+        scrollNode.setAttribute("fade", "bottom");
+      } else if (scrollNode.scrollHeight - scrollNode.scrollTop - scrollNode.clientHeight == 0) {
+        scrollNode.setAttribute("fade", "top");
+      } else {
+        scrollNode.setAttribute("fade", "full");
+      }
+    });
+  });
+
+  waitForElement([".Root__nav-bar .os-viewport.os-viewport-native-scrollbars-invisible"], ([scrollNode]) => {
+    scrollNode.setAttribute("fade", "bottom");
+    scrollNode.addEventListener("scroll", () => {
+      // fade
+      if (scrollNode.scrollTop == 0) {
+        scrollNode.setAttribute("fade", "bottom");
+      } else if (scrollNode.scrollHeight - scrollNode.scrollTop - scrollNode.clientHeight == 0) {
+        scrollNode.setAttribute("fade", "top");
+      } else {
+        scrollNode.setAttribute("fade", "full");
+      }
+    });
+  });
+
+  waitForElement([".Root__nav-right-sidebar .os-viewport.os-viewport-native-scrollbars-invisible"], ([scrollNode]) => {
+    scrollNode.setAttribute("fade", "bottom");
+    scrollNode.addEventListener("scroll", () => {
       // fade
       if (scrollNode.scrollTop == 0) {
         scrollNode.setAttribute("fade", "bottom");
