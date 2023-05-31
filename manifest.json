@@ -5,7 +5,7 @@
   "readme": "README.md",
   "usercss": "user.css",
   "schemes": "color.ini",
-  "include": ["https://raw.githubusercontent.com/harbassan/spicetify-galaxy/main/galaxy.js"],
+  "include": ["https://raw.githubusercontent.com/harbassan/spicetify-galaxy/main/theme.js"],
   "authors": [
     {
       "name": "harbassan",
