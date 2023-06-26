@@ -805,7 +805,7 @@ YOUR LIBRARY X
 -------------------
 */
 
-.nav-ylx .main-yourLibraryX-entryPoints {
+.main-yourLibraryX-entryPoints {
     background: none;
 }
 
@@ -823,15 +823,15 @@ YOUR LIBRARY X
 }
 
 /* remove top-container padding */
-.nav-ylx .Root__top-container {
+.Root__top-container {
     padding: 0 !important;
 }
-.nav-ylx .main-navBar-mainNav {
+.main-navBar-mainNav {
     padding-top: 25px;
 }
 
 /* font size and weight */
-.nav-ylx span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type {
+span.Type__TypeElement-sc-goli3j-0.TypeElement-balladBold-type {
     font-size: 0.875rem;
     line-height: 1rem;
     font-weight: 700;
@@ -918,7 +918,7 @@ RIGHT SIDEBAR
 }
 
 /* add top padding */
-.spotify__os--is-windows .nav-ylx .main-buddyFeed-content {
+.spotify__os--is-windows .main-buddyFeed-content {
     padding-top: 24px;
 }
 
