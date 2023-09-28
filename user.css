@@ -875,6 +875,13 @@ button.search-searchCategory-carouselButton {
         transparent 100%
     );
 }
+/*add ylx filters' color*/
+span.ChipInner__ChipInnerComponent-sc-1ly6j4j-0,
+button.x-sortBox-sortDropdown,
+button.x-filterBox-expandButton,
+sortDropdown {
+  background-color: #28282860 !important;
+}
 
 /* add selected page indicator */
 .link-subtle.main-yourLibraryX-navLink::before {
@@ -946,4 +953,54 @@ RIGHT SIDEBAR
         rgba(var(--spice-rgb-selected-row), 0.07) 60%,
         transparent 100%
     );
+}
+/*
+-------------------
+SPICETIFY EXTENSIONS/APPS
+-------------------
+*/
+
+/*Lyrics Plus*/
+.lyrics-versionSelector select,
+.lyrics-Genius-noteTextContainer,
+.lyrics-versionSelector option {
+  background-color: grey;
+}
+.lyrics-lyricsContainer-LyricsLine a.fetched {
+  background-color: none !important;
+  background: none;
+  border-bottom: 2px solid grey;
+}
+.lyrics-lyricsContainer-LyricsLine a:hover {
+  border-bottom: none;
+}
+.lyrics-lyricsContainer-LyricsBackground,
+.Ft1cMGlqDsCbqmXQyeKN,
+.playlist-item__img.folder {
+  background-color: transparent !important;
+}
+
+/**/
+
+/*
+-------------------
+THIRD PARTY EXTENSIONS/APPS
+-------------------
+*/
+
+/*Section Marker Tweak*/
+.section-marker-sections {
+  display: none;
+}
+.section-marker-markers {
+  display: block !important; /* So as to never have them hidden, regardless of the bar's width */
+}
+.section-marker-marker {
+  height: 100%; /* For 1.0.0, instead use var(--progress-bar-height) */
+  background-color: var(--spice-player);
+}
+
+/*Spotify Genre*/
+.login-button {
+  color: black !important;
 }
