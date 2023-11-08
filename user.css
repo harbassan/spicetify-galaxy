@@ -954,6 +954,21 @@ RIGHT SIDEBAR
         transparent 100%
     );
 }
+
+/*
+-------------------
+LYRICS PAGE
+-------------------
+*/
+
+.lyrics-lyrics-container .lyrics-lyrics-adLeaderboardIsEnabled .lyrics-lyrics-coverTopBar {
+    --lyrics-color-active: rgb(255, 255, 255);
+    --lyrics-color-inactive: rgb(128, 128, 128);
+    --lyrics-color-passed: rgb(255, 255, 255);
+    --lyrics-color-background: rgb(97, 123, 130);
+    --lyrics-color-messaging: rgb(0, 0, 0);
+}
+
 /*
 -------------------
 SPICETIFY EXTENSIONS/APPS
