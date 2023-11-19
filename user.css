@@ -1,7 +1,7 @@
 /* important */
-.os-theme-spotify .os-viewport {
+/* .os-theme-spotify .os-viewport {
     transform: none;
-}
+} */
 :root {
     --scrollbar-vertical-size: 10px;
 }
@@ -124,6 +124,10 @@ TOP BAR
     height: 32px;
     width: 32px;
 }
+.main-topBar-topbarContentWrapper .ButtonInner-sc-14ud5tc-0.ButtonInner-medium-iconOnly {
+    background: none;
+    color: var(--spice-text);
+}
 .main-userWidget-box span,
 .main-userWidget-box svg {
     display: none;
@@ -205,6 +209,9 @@ div#marketplace-readme {
     background: none;
     margin-left: 0;
     padding: 0;
+}
+.marketplace-header {
+    background: none;
 }
 /*
 -------------------
@@ -348,10 +355,6 @@ MAIN VIEW
 }
 .main-card-card {
     background: rgba(0, 0, 0, 0.3) !important;
-}
-.marketplace-header__left {
-    position: absolute !important;
-    left: 0 !important;
 }
 .view-homeShortcutsGrid-shortcut {
     background: rgba(0, 0, 0, 0.3) !important;
@@ -852,21 +855,12 @@ button.search-searchCategory-carouselButton {
     box-shadow: none;
 }
 
-/* remove hover effects on ylx items */
-.BoxComponent-group-tinted-isInteractive-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px::after {
-    visibility: hidden;
-}
-.BoxComponent-group-naked-isInteractive-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px::after {
-    visibility: hidden;
-}
-.BoxComponent-group-tinted-isInteractive-hasFocus-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px::after {
-    visibility: hidden;
-}
-
-/* add ylx item selected gradient effect */
-.BoxComponent-group-tinted-isInteractive-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px,
-.Box-group-tinted-isInteractive-hasFocus-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px,
-.BoxComponent-group-tinted-isInteractive-hasFocus-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px {
+.BoxComponent-group-naked-listRow-isInteractive-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px:hover::after,
+.BoxComponent-group-tinted-listRow-isInteractive-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px:hover::after,
+.BoxComponent-group-tinted-listRow-isInteractive-hasFocus-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px:hover:after,
+.BoxComponent-group-naked-listRow-isInteractive-paddingBlockStart_4px-paddingBlockEnd_4px-minBlockSize_32px-padding_4px_8px:hover::after,
+.BoxComponent-group-tinted-listRow-isInteractive-paddingBlockStart_4px-paddingBlockEnd_4px-minBlockSize_32px-padding_4px_8px:hover::after,
+.BoxComponent-group-tinted-listRow-isInteractive-hasFocus-paddingBlockStart_4px-paddingBlockEnd_4px-minBlockSize_32px-padding_4px_8px:hover::after {
     background: linear-gradient(
         90deg,
         transparent 0%,
@@ -875,12 +869,37 @@ button.search-searchCategory-carouselButton {
         transparent 100%
     );
 }
-/*add ylx filters' color*/
+
+/* add ylx item selected gradient effect */
+.BoxComponent-group-tinted-listRow-isInteractive-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px,
+.BoxComponent-group-tinted-listRow-isInteractive-hasFocus-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px,
+.BoxComponent-group-tinted-listRow-isInteractive-paddingBlockStart_4px-paddingBlockEnd_4px-minBlockSize_32px-padding_4px_8px,
+.BoxComponent-group-tinted-listRow-isInteractive-hasFocus-paddingBlockStart_4px-paddingBlockEnd_4px-minBlockSize_32px-padding_4px_8px {
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(var(--spice-rgb-selected-row), 0.07) 30%,
+        rgba(var(--spice-rgb-selected-row), 0.07) 60%,
+        transparent 100%
+    );
+}
+/* add ylx filters' color
 span.ChipInner__ChipInnerComponent-sc-1ly6j4j-0,
 button.x-sortBox-sortDropdown,
 button.x-filterBox-expandButton,
 sortDropdown {
-  background-color: #28282860 !important;
+    background-color: #28282860 !important;
+} */
+
+button.ChipClear__ChipClearComponent-sc-zv5btm-0 {
+    background-color: rgba(var(--spice-rgb-shadow), 0.7);
+    height: 32px;
+    border-radius: 8px;
+    color: rgba(var(--spice-rgb-text), 0.7);
+}
+button.ChipClear__ChipClearComponent-sc-zv5btm-0:hover {
+    background-color: rgba(var(--spice-rgb-shadow), 0.7);
+    color: rgba(var(--spice-rgb-text), 1);
 }
 
 /* add selected page indicator */
@@ -979,20 +998,20 @@ SPICETIFY EXTENSIONS/APPS
 .lyrics-versionSelector select,
 .lyrics-Genius-noteTextContainer,
 .lyrics-versionSelector option {
-  background-color: grey;
+    background-color: grey;
 }
 .lyrics-lyricsContainer-LyricsLine a.fetched {
-  background-color: none !important;
-  background: none;
-  border-bottom: 2px solid grey;
+    background-color: none !important;
+    background: none;
+    border-bottom: 2px solid grey;
 }
 .lyrics-lyricsContainer-LyricsLine a:hover {
-  border-bottom: none;
+    border-bottom: none;
 }
 .lyrics-lyricsContainer-LyricsBackground,
 .Ft1cMGlqDsCbqmXQyeKN,
 .playlist-item__img.folder {
-  background-color: transparent !important;
+    background-color: transparent !important;
 }
 
 /**/
@@ -1005,17 +1024,17 @@ THIRD PARTY EXTENSIONS/APPS
 
 /*Section Marker Tweak*/
 .section-marker-sections {
-  display: none;
+    display: none;
 }
 .section-marker-markers {
-  display: block !important; /* So as to never have them hidden, regardless of the bar's width */
+    display: block !important; /* So as to never have them hidden, regardless of the bar's width */
 }
 .section-marker-marker {
-  height: 100%; /* For 1.0.0, instead use var(--progress-bar-height) */
-  background-color: var(--spice-player);
+    height: 100%; /* For 1.0.0, instead use var(--progress-bar-height) */
+    background-color: var(--spice-player);
 }
 
 /*Spotify Genre*/
 .login-button {
-  color: black !important;
+    color: black !important;
 }
