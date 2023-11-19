@@ -34,10 +34,10 @@ Note that if you select locally downloaded images for the backgrounds, there wil
 
 There are multiple options in the home page settings (top left corner) which provide further customisations. These include:
 
-- adding blur (two seperate options for home vs other pages)
-- use of the currently playing song as page backgrounds
-- use of a single image across all of the app
-- adding/removing the album/playlist header image
+-   adding blur (two seperate options for home vs other pages)
+-   use of the currently playing song as page backgrounds
+-   use of a single image across all of the app
+-   adding/removing the album/playlist header image
 
 ##### How to edit the source
 
@@ -51,7 +51,7 @@ Go into your theme folder and open either:
 
 ### Manual Installation
 
-After cloning the repo add the files `user.css` and `color.ini` into a new folder named `Galaxy`, and place this folder into your `Themes` folder in `%localappdata%\spicetify`.
+After cloning the repo add the files `user.css`, `color.ini` and `theme.js` into a new folder named `Galaxy`, and place this folder into your `Themes` folder in `%localappdata%\spicetify`.
 
 Then run these commands to apply:
 
