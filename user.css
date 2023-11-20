@@ -38,9 +38,6 @@ a.link-subtle.main-navBar-navBarLink svg,
     padding: 0;
     color: var(--spice-text);
 }
-/* .main-navBar-navBar {
-  position: relative;
-} */
 .main-navBar-navBarItem .collection-icon,
 .main-navBar-navBarItem .search-icon,
 .main-navBar-navBarItem .home-icon {
@@ -116,8 +113,6 @@ TOP BAR
     visibility: hidden;
 }
 .main-topBar-historyButtons {
-    /* position: absolute;
-  left: calc(var(--nav-bar-width) + 25px); */
     gap: 10px;
 }
 .Root__top-bar .ButtonInner-sc-14ud5tc-0.encore-bright-accent-set {
@@ -156,6 +151,11 @@ a.main-topBar-button,
 span.main-entityHeader-topbarTitle {
     line-height: 45px;
     height: 40px;
+}
+
+/* for windows only */
+.spotify__os--is-windows [data-right-sidebar-hidden="true"] .main-topBar-container {
+    padding-right: 160px;
 }
 /*
 -------------------
@@ -645,10 +645,6 @@ div[aria-label="Galaxy Settings"] .main-trackCreditsModal-mainSection {
 }
 .main-trackCreditsModal-originalCredits {
     padding-bottom: 0;
-}
-.main-userWidget-dropDownMenu li.main-contextMenu-menuItem > div {
-    left: calc(225px + 185px) !important;
-    width: 225px;
 }
 .galaxyOptionRow {
     display: flex;
