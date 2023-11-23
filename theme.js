@@ -65,7 +65,7 @@
 
   async function fetchCurrTrackAlbumImage() {
     console.log("galaxy: fetching current track album image...");
-    const data = Spicetify.Player.data.track.metadata;
+    const data = Spicetify.Player.data.item.metadata;
     if (localStorage.getItem(`galaxy:tempAlbumImage:${data.album_uri.split(":")[2]}`)) {
       setBg(localStorage.getItem(`galaxy:tempAlbumImage:${data.album_uri.split(":")[2]}`))
       return
@@ -235,7 +235,7 @@
         try {
           localStorage.setItem("galaxy:startupBg", result);
         } catch {
-          Spicetify.showNotification("File too large");
+          Spicetify.Snackbar.enqueueSnackbar("File too large");
           return;
         }
         document.querySelector("#home-select img").src = result;
@@ -243,7 +243,7 @@
         try {
           localStorage.setItem("galaxy:playlistBg:" + uid, result);
         } catch {
-          Spicetify.showNotification("File too large");
+          Spicetify.Snackbar.enqueueSnackbar("File too large");
           return;
         }
         loadBg_playlist(uid);
