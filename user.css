@@ -1034,3 +1034,8 @@ THIRD PARTY EXTENSIONS/APPS
 .login-button {
     color: black !important;
 }
+
+/*The Eternal Jukebox*/
+.app-module__flex-center___p5IEY_eternalDjukebox button {
+    color: black;
+}
