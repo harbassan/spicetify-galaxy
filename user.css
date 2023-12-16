@@ -1039,3 +1039,7 @@ THIRD PARTY EXTENSIONS/APPS
 .app-module__flex-center___p5IEY_eternalDjukebox button {
     color: black;
 }
+
+.app-module__flex-center___p5IEY_eternalDjukebox {
+    padding-bottom: 12px;
+}
