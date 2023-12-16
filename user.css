@@ -375,6 +375,19 @@ MAIN VIEW
     transform: rotate(45deg) translate(0px, -70%);
     filter: blur(6px);
 }
+.main-view-container .main-playButton-PlayButton > button > span {
+  inline-size: 42px;
+  block-size: 42px;
+  min-block-size: auto;
+}
+.main-view-container .main-playButton-PlayButton svg {
+  width: 24px;
+  height: 24px;
+}
+.main-view-container .main-playButton-PlayButton > button > span > span {
+  position: initial;
+  height: 24px;
+}
 /*
 -------------------
 SEARCH PAGE
