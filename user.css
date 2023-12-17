@@ -1034,3 +1034,8 @@ THIRD PARTY EXTENSIONS/APPS
 .login-button {
     color: black !important;
 }
+
+/*The Eternal Jukebox*/
+.app-module__stats___LylvR_eternalDjukebox {
+    padding-bottom: 110px;
+}
