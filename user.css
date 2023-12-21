@@ -940,8 +940,9 @@ RIGHT SIDEBAR
 }
 
 /* add top padding */
-.spotify__os--is-windows .main-buddyFeed-content {
-    padding-top: 24px;
+.spotify__os--is-windows .main-buddyFeed-content,
+.spotify__os--is-windows .main-nowPlayingView-content {
+    padding-top: 36px;
 }
 
 /* set transparent background for section containers */
