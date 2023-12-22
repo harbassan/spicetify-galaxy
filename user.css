@@ -501,12 +501,12 @@ PLAYLIST PAGE
     background: none !important;
 }
 .main-actionBar-ActionBar .main-playButton-PlayButton svg {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
 }
 .main-actionBar-ActionBar .main-playButton-PlayButton > button > span > span {
   position: initial;
-  height: 32px;
+  height: 34px;
 }
 .main-entityHeader-titleButton {
     width: auto;
