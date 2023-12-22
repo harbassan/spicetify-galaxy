@@ -376,17 +376,17 @@ MAIN VIEW
     filter: blur(6px);
 }
 .main-home-home .main-playButton-PlayButton > button > span {
-  inline-size: 42px;
-  block-size: 42px;
-  min-block-size: auto;
+    inline-size: 42px;
+    block-size: 42px;
+    min-block-size: auto;
 }
 .main-home-home .main-playButton-PlayButton svg {
-  width: 24px;
-  height: 24px;
+    width: 24px;
+    height: 24px;
 }
 .main-home-home .main-playButton-PlayButton > button > span > span {
-  position: initial;
-  height: 24px;
+    position: initial;
+    height: 24px;
 }
 /*
 -------------------
@@ -462,51 +462,33 @@ HIDE BACKGROUNDS
 PLAYLIST PAGE
 -------------------
 */
-
-/* remove main play button background */
-.ButtonInner-sc-14ud5tc-0.ButtonInner-lg-iconOnly.encore-bright-accent-set {
-    background: none;
-    color: white;
-}
-
 .playlist-playlist-playlistImageContainer {
     display: none;
 }
 .playlist-playlist-playlistContent {
     background: none !important;
 }
-.playlist-playlist-playlist span.ButtonInner-sc-14ud5tc-0.encore-bright-accent-set,
-.Root__top-bar span.ButtonInner-sc-14ud5tc-0.encore-bright-accent-set {
-    background: none;
+
+/* remove main play button background */
+.main-actionBar-ActionBar .ButtonInner-sc-14ud5tc-0.encore-bright-accent-set {
+    background: none !important;
+    color: var(--spice-text);
+}
+.main-playButton-PlayButton {
+    background: none !important;
 }
 .playlist-playlist-playlist span.IconWrapper__Wrapper-sc-1hf1hjl-0,
-.Root__top-bar span.IconWrapper__Wrapper-sc-1hf1hjl-0 {
+.Root__top-bar span.IconWrapper__Wrapper-sc-1hf1hjl-0,
+.main-actionBar-ActionBar .main-playButton-PlayButton > button > span > span {
     top: auto;
     left: auto;
     color: var(--spice-text);
 }
 .playlist-playlist-playlist .Root__main-view .IconWrapper__Wrapper-sc-1hf1hjl-0 svg,
-.Root__top-bar .Root__main-view .IconWrapper__Wrapper-sc-1hf1hjl-0 svg {
+.Root__top-bar .Root__main-view .IconWrapper__Wrapper-sc-1hf1hjl-0 svg,
+.main-actionBar-ActionBar .main-playButton-PlayButton svg {
     height: 34px;
     width: 34px;
-}
-/* old  */
-.main-playButton-PlayButton:focus,
-.main-playButton-PlayButton:hover,
-/* new  */
-.playlist-playlist-playlist .main-playButton-PlayButton> button:hover > span,
-.playlist-playlist-playlist .main-playButton-PlayButton > button:focus > span,
-.Root__top-bar .main-playButton-PlayButton> button:hover > span,
-.Root__top-bar .main-playButton-PlayButton > button:focus > span {
-    background: none !important;
-}
-.main-actionBar-ActionBar .main-playButton-PlayButton svg {
-  width: 34px;
-  height: 34px;
-}
-.main-actionBar-ActionBar .main-playButton-PlayButton > button > span > span {
-  position: initial;
-  height: 34px;
 }
 .main-entityHeader-titleButton {
     width: auto;
