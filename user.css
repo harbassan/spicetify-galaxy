@@ -375,6 +375,19 @@ MAIN VIEW
     transform: rotate(45deg) translate(0px, -70%);
     filter: blur(6px);
 }
+.main-home-home .main-playButton-PlayButton > button > span {
+  inline-size: 42px;
+  block-size: 42px;
+  min-block-size: auto;
+}
+.main-home-home .main-playButton-PlayButton svg {
+  width: 24px;
+  height: 24px;
+}
+.main-home-home .main-playButton-PlayButton > button > span > span {
+  position: initial;
+  height: 24px;
+}
 /*
 -------------------
 SEARCH PAGE
@@ -486,6 +499,14 @@ PLAYLIST PAGE
 .Root__top-bar .main-playButton-PlayButton> button:hover > span,
 .Root__top-bar .main-playButton-PlayButton > button:focus > span {
     background: none !important;
+}
+.main-actionBar-ActionBar .main-playButton-PlayButton svg {
+  width: 34px;
+  height: 34px;
+}
+.main-actionBar-ActionBar .main-playButton-PlayButton > button > span > span {
+  position: initial;
+  height: 34px;
 }
 .main-entityHeader-titleButton {
     width: auto;
