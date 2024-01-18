@@ -941,6 +941,9 @@ RIGHT SIDEBAR
 .Root__right-sidebar aside {
     background: none;
 }
+.main-nowPlayingView-content.main-nowPlayingView-gradient{
+    background:none !important;
+}
 
 /* add top padding */
 .spotify__os--is-windows .main-buddyFeed-content,
@@ -1032,6 +1035,14 @@ THIRD PARTY EXTENSIONS/APPS
 .section-marker-marker {
     height: 100%; /* For 1.0.0, instead use var(--progress-bar-height) */
     background-color: var(--spice-player);
+}
+
+/*Spicetify Marketplace*/
+/*Galaxy Theme Fixes*/
+
+.Dropdown-control {
+    height:32px;
+    padding:3px 36px 8px 16px !important;
 }
 
 /*Spotify Genre*/
