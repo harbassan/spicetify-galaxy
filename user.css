@@ -184,9 +184,19 @@ button.marketplace-header-icon-button {
 button.marketplace-header-icon-button:hover {
     color: var(--spice-text);
 }
-svg.devtools-icon {
-    fill: inherit;
+
+/* fix devtool icon color */
+svg.devtools-icon{
+    fill:var(--spice-button) !important;
 }
+
+/* fix drop-down background color */
+.Dropdown-control {
+    height:32px;
+    padding:3px 36px 8px 16px !important;
+    background-color:rgba(var(--spice-rgb-shadow), 0.7) !important;
+}
+
 button#marketplace-update {
     background-color: rgba(var(--spice-rgb-shadow), 0.7);
     height: 32px;
@@ -319,6 +329,12 @@ MAIN VIEW
 .fSKBdxsPEB5WUAJWTYlh {
     background: transparent;
 }
+/* fix favourite button color */
+.main-trackList-rowHeartButton{
+    background-color:transparent !important;
+    border:none;
+}
+
 .main-trackList-playingIcon {
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg id='playing-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 24'%3E%3Cdefs%3E%3Cstyle%3E %23playing-icon %7B fill: %2320BC54; %7D @keyframes play %7B 0%25 %7Btransform: scaleY(1);%7D 3.3%25 %7Btransform: scaleY(0.9583);%7D 6.6%25 %7Btransform: scaleY(0.9166);%7D 9.9%25 %7Btransform: scaleY(0.8333);%7D 13.3%25 %7Btransform: scaleY(0.7083);%7D 16.6%25 %7Btransform: scaleY(0.5416);%7D 19.9%25 %7Btransform: scaleY(0.4166);%7D 23.3%25 %7Btransform: scaleY(0.25);%7D 26.6%25 %7Btransform: scaleY(0.1666);%7D 29.9%25 %7Btransform: scaleY(0.125);%7D 33.3%25 %7Btransform: scaleY(0.125);%7D 36.6%25 %7Btransform: scaleY(0.1666);%7D 39.9%25 %7Btransform: scaleY(0.1666);%7D 43.3%25 %7Btransform: scaleY(0.2083);%7D 46.6%25 %7Btransform: scaleY(0.2916);%7D 49.9%25 %7Btransform: scaleY(0.375);%7D 53.3%25 %7Btransform: scaleY(0.5);%7D 56.6%25 %7Btransform: scaleY(0.5833);%7D 59.9%25 %7Btransform: scaleY(0.625);%7D 63.3%25 %7Btransform: scaleY(0.6666);%7D 66.6%25 %7Btransform: scaleY(0.6666);%7D 69.9%25 %7Btransform: scaleY(0.6666);%7D 73.3%25 %7Btransform: scaleY(0.6666);%7D 76.6%25 %7Btransform: scaleY(0.7083);%7D 79.9%25 %7Btransform: scaleY(0.75);%7D 83.3%25 %7Btransform: scaleY(0.8333);%7D 86.6%25 %7Btransform: scaleY(0.875);%7D 89.9%25 %7Btransform: scaleY(0.9166);%7D 93.3%25 %7Btransform: scaleY(0.9583);%7D 96.6%25 %7Btransform: scaleY(1);%7D %7D %23bar1 %7B transform-origin: bottom; animation: play 0.9s -0.51s infinite; %7D %23bar2 %7B transform-origin: bottom; animation: play 0.9s infinite; %7D %23bar3 %7B transform-origin: bottom; animation: play 0.9s -0.15s infinite; %7D %23bar4 %7B transform-origin: bottom; animation: play 0.9s -0.75s infinite; %7D %3C/style%3E%3C/defs%3E%3Ctitle%3Eplaying-icon%3C/title%3E%3Crect id='bar1' class='cls-1' width='4' height='24'/%3E%3Crect id='bar2' class='cls-1' x='6' width='4' height='24'/%3E%3Crect id='bar3' class='cls-1' x='12' width='4' height='24'/%3E%3Crect id='bar4' class='cls-1' x='18' width='4' height='24'/%3E%3C/svg%3E");
     background: var(--spice-text);
@@ -345,6 +361,30 @@ MAIN VIEW
         transparent 100%
     );
 }
+/* fix home card animation */
+.main-card-cardContainer:hover .main-cardImage-imageWrapper {
+    transform: perspective(75em) rotateX(20deg);
+}
+.main-card-cardContainer:hover::after{
+    background-color:rgba(0, 0, 0, 0.3) !important;
+}
+  .main-gridContainer-gridContainer{
+    gap:8px;
+}
+.main-card-cardContainer .main-cardImage-imageWrapper {
+    transition: transform 0.35s ease;
+    transform-origin: 50% -40px;
+    overflow: hidden;
+}
+  
+.main-card-cardContainer {
+    background: rgba(0, 0, 0, 0.3) !important;
+}
+.main-card-cardContainer:hover .main-card-imageContainer .main-cardImage-imageWrapper::after {
+  transform: rotate(45deg) translate(0px, -70%);
+  filter: blur(6px);
+}
+
 .main-card-card .main-cardImage-imageWrapper {
     transition: transform 0.35s ease;
     transform-origin: 50% -40px;
@@ -438,6 +478,33 @@ span.ChipInner__ChipInnerComponent-sc-1ly6j4j-0 {
 .search-searchCategory-wrapper {
     justify-content: center;
 }
+
+/* add search category animation */
+.x-categoryCard-CategoryCard>div:hover{
+    transform: perspective(75em) rotateX(20deg);
+}
+.x-categoryCard-CategoryCard>div{
+    transition: transform 0.35s ease;
+    transform-origin: 50% -40px;
+    overflow: hidden;
+}
+.x-categoryCard-CategoryCard>div:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg) translate(0px, -90%);
+    transition: all 0.3s ease-out;
+    filter: blur(4px);
+}
+.x-categoryCard-CategoryCard>div:hover::after{
+    transform: rotate(45deg) translate(0px, -70%);
+    filter: blur(6px);
+}
+
 /*
 -------------------
 HIDE BACKGROUNDS
@@ -515,6 +582,11 @@ img.main-entityHeader-image,
 DISCOG PAGE
 -------------------
 */
+
+/* fix album background color */
+.artist-artistDiscography-headerContainer{
+    background: none !important;
+}
 .fEvxx8vl3zTNWsuC8lpx {
     background: transparent;
 }
@@ -578,6 +650,15 @@ POPUP MODAL
         ". save-button"
         "disclaimer disclaimer";
 }
+
+/* Modal background color fix */
+.GenericModal {
+    background-color: transparent !important;
+}
+.artist-artistAbout-modalBase{
+    background-color:var(--spice-player) !important;
+}
+
 #banner-select {
     grid-area: banner-image;
     width: auto;
@@ -624,6 +705,9 @@ img.bg-main-image {
 }
 .lyrics-lyrics-background {
     display: none;
+}
+.lyrics-lyricsContainer-LyricsContainer{
+    --lyrics-color-background:none !important;
 }
 /* blur background when option is enabled */
 .bg-main-shadow.blur-enabled {
@@ -814,6 +898,11 @@ YOUR LIBRARY X
 /* fix spacing for 'your library' button */
 .Wrapper-md-leading {
     margin-inline-end: 20px;
+}
+
+/* fix list-item hover effect */
+.main-yourLibraryX-listItemGroup:hover::after{
+    background-color:rgba(0,0,0,0.3) !important;
 }
 
 /* remove small button hover effects */
@@ -1035,13 +1124,6 @@ THIRD PARTY EXTENSIONS/APPS
 .section-marker-marker {
     height: 100%; /* For 1.0.0, instead use var(--progress-bar-height) */
     background-color: var(--spice-player);
-}
-
-/*Spicetify Marketplace*/
-
-.Dropdown-control {
-    height:32px;
-    padding:3px 36px 8px 16px !important;
 }
 
 /*Spotify Genre*/
