@@ -362,29 +362,48 @@ MAIN VIEW
     );
 }
 /* fix home card animation */
-.main-card-cardContainer:hover .main-cardImage-imageWrapper {
-    transform: perspective(75em) rotateX(20deg);
-}
+
 .main-card-cardContainer:hover::after{
     background-color:rgba(0, 0, 0, 0.3) !important;
 }
-  .main-gridContainer-gridContainer{
+.main-gridContainer-gridContainer{
     gap:8px;
 }
-.main-card-cardContainer .main-cardImage-imageWrapper {
+.main-card-cardContainer {
+    background: rgba(0, 0, 0, 0.3) !important;
+}
+.main-card-cardContainer:hover .main-card-imageContainer {
+    transform: perspective(75em) rotateX(20deg);
+}
+.main-card-cardContainer .main-card-imageContainer {
     transition: transform 0.35s ease;
     transform-origin: 50% -40px;
     overflow: hidden;
 }
-  
-.main-card-cardContainer {
-    background: rgba(0, 0, 0, 0.3) !important;
+.main-card-cardContainer[aria-labelledby^="card-title-spotify:artist"]>.main-card-imageContainer,
+.main-card-cardContainer[aria-labelledby*="spotify:user:"]>.main-card-imageContainer{
+    border-radius: 50%;
 }
-.main-card-cardContainer:hover .main-card-imageContainer .main-cardImage-imageWrapper::after {
-  transform: rotate(45deg) translate(0px, -70%);
-  filter: blur(6px);
+.main-card-PlayButtonContainer{
+    bottom: 20px !important;
+    right: 20px !important;
 }
-
+.main-card-cardContainer:hover .main-card-imageContainer::after{
+    transform: rotate(45deg) translate(0px, -70%);
+    filter: blur(6px);
+}
+.main-card-imageContainer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg) translate(0px, -90%);
+    transition: all 0.3s ease-out;
+    filter: blur(4px);
+}
 .main-card-card .main-cardImage-imageWrapper {
     transition: transform 0.35s ease;
     transform-origin: 50% -40px;
@@ -399,18 +418,7 @@ MAIN VIEW
 .view-homeShortcutsGrid-shortcut {
     background: rgba(0, 0, 0, 0.3) !important;
 }
-.main-card-imageContainer .main-cardImage-imageWrapper::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.1);
-    transform: rotate(45deg) translate(0px, -90%);
-    transition: all 0.3s ease-out;
-    filter: blur(4px);
-}
+
 .main-card-card:hover .main-card-imageContainer .main-cardImage-imageWrapper::after {
     transform: rotate(45deg) translate(0px, -70%);
     filter: blur(6px);
@@ -480,15 +488,15 @@ span.ChipInner__ChipInnerComponent-sc-1ly6j4j-0 {
 }
 
 /* add search category animation */
-.x-categoryCard-CategoryCard>div:hover{
+div.main-gridContainer-gridContainer.main-shelf-shelfGrid > a >div:hover{
     transform: perspective(75em) rotateX(20deg);
 }
-.x-categoryCard-CategoryCard>div{
+div.main-gridContainer-gridContainer.main-shelf-shelfGrid > a >div{
     transition: transform 0.35s ease;
     transform-origin: 50% -40px;
     overflow: hidden;
 }
-.x-categoryCard-CategoryCard>div:after {
+div.main-gridContainer-gridContainer.main-shelf-shelfGrid > a >div:after {
     content: "";
     position: absolute;
     top: 0;
@@ -500,7 +508,7 @@ span.ChipInner__ChipInnerComponent-sc-1ly6j4j-0 {
     transition: all 0.3s ease-out;
     filter: blur(4px);
 }
-.x-categoryCard-CategoryCard>div:hover::after{
+div.main-gridContainer-gridContainer.main-shelf-shelfGrid > a >div:hover::after{
     transform: rotate(45deg) translate(0px, -70%);
     filter: blur(6px);
 }
@@ -524,6 +532,33 @@ HIDE BACKGROUNDS
 .hidden {
     display: none !important;
 }
+
+/*Fix backgrounds and sticky elements*/
+div.main-trackList-trackListHeader._2ajKWDiy6YvJu5wo8I1g{
+    box-shadow: 0px 0px 1px 0px white;
+    border-bottom:0px;
+    background:transparent !important;
+    backdrop-filter: blur(5px);
+  }
+.main-topBar-container,.main-topBar-overlay{
+    background:transparent !important;
+}
+.main-topBar-background{
+    display: block !important;
+    background:transparent !important;
+    backdrop-filter: blur(5px);
+}
+div.main-topBar-topbarContentWrapper.center > div > div > form > input{
+    background-color:rgba(0,0,0,0.3) !important;
+}
+div.main-view-container__scroll-node-child > main > div ,
+div.main-view-container__scroll-node-child > main > div:after,
+div.main-view-container__scroll-node-child > main > div > div,
+div.main-view-container__scroll-node-child > main > div > div:after{
+    background:transparent !important;
+}
+
+
 /*
 -------------------
 PLAYLIST PAGE
@@ -657,6 +692,9 @@ POPUP MODAL
 }
 .artist-artistAbout-modalBase{
     background-color:var(--spice-player) !important;
+}
+.GenericModal > div >  div:nth-child(2) > div{
+    background: var(--spice-player) !important;
 }
 
 #banner-select {
@@ -1082,6 +1120,16 @@ LYRICS PAGE
 
 /*
 -------------------
+SETTTINGS PAGE
+-------------------
+*/
+
+.x-settings-equalizerSection{
+    background-color:rgba(0,0,0,0.3) !important;
+}
+
+/*
+-------------------
 SPICETIFY EXTENSIONS/APPS
 -------------------
 */
@@ -1131,6 +1179,10 @@ THIRD PARTY EXTENSIONS/APPS
     color: black !important;
 }
 
+/* Beautiful-Lyrics */
+.main-nowPlayingView-coverArt{
+    box-shadow:none !important;
+}
 /*The Eternal Jukebox*/
 .app-module__flex-center___p5IEY_eternalDjukebox button {
     color: black;
