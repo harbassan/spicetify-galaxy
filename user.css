@@ -486,15 +486,15 @@ span.ChipInner__ChipInnerComponent-sc-1ly6j4j-0 {
 }
 
 /* add search category animation */
-.x-categoryCard-CategoryCard>div:hover{
+div.main-gridContainer-gridContainer.main-shelf-shelfGrid > a >div:hover{
     transform: perspective(75em) rotateX(20deg);
 }
-.x-categoryCard-CategoryCard>div{
+div.main-gridContainer-gridContainer.main-shelf-shelfGrid > a >div{
     transition: transform 0.35s ease;
     transform-origin: 50% -40px;
     overflow: hidden;
 }
-.x-categoryCard-CategoryCard>div:after {
+div.main-gridContainer-gridContainer.main-shelf-shelfGrid > a >div:after {
     content: "";
     position: absolute;
     top: 0;
@@ -506,7 +506,7 @@ span.ChipInner__ChipInnerComponent-sc-1ly6j4j-0 {
     transition: all 0.3s ease-out;
     filter: blur(4px);
 }
-.x-categoryCard-CategoryCard>div:hover::after{
+div.main-gridContainer-gridContainer.main-shelf-shelfGrid > a >div:hover::after{
     transform: rotate(45deg) translate(0px, -70%);
     filter: blur(6px);
 }
