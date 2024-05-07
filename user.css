@@ -372,9 +372,6 @@ MAIN VIEW
 .main-card-cardContainer {
     background: rgba(0, 0, 0, 0.3) !important;
 }
-div.main-gridContainer-gridContainer.main-shelf-shelfGrid > div > div{
-    background-color:transparent !important;
-}
 .main-card-cardContainer:hover .main-card-imageContainer {
     transform: perspective(75em) rotateX(20deg);
 }
@@ -383,7 +380,8 @@ div.main-gridContainer-gridContainer.main-shelf-shelfGrid > div > div{
     transform-origin: 50% -40px;
     overflow: hidden;
 }
-.main-card-cardContainer[aria-labelledby^="card-title-spotify:artist"]>.main-card-imageContainer{
+.main-card-cardContainer[aria-labelledby^="card-title-spotify:artist"]>.main-card-imageContainer,
+.main-card-cardContainer[aria-labelledby*="spotify:user:"]>.main-card-imageContainer{
     border-radius: 50%;
 }
 .main-card-cardContainer:hover .main-card-imageContainer::after{
@@ -530,6 +528,33 @@ HIDE BACKGROUNDS
 .hidden {
     display: none !important;
 }
+
+/*Fix backgrounds and sticky elements*/
+div.main-trackList-trackListHeader._2ajKWDiy6YvJu5wo8I1g{
+    box-shadow: 0px 0px 1px 0px white;
+    border-bottom:0px;
+    background:transparent !important;
+    backdrop-filter: blur(5px);
+  }
+.main-topBar-container,.main-topBar-overlay{
+    background:transparent !important;
+}
+.main-topBar-background{
+    display: block !important;
+    background:transparent !important;
+    backdrop-filter: blur(5px);
+}
+div.main-topBar-topbarContentWrapper.center > div > div > form > input{
+    background-color:rgba(0,0,0,0.3) !important;
+}
+div.main-view-container__scroll-node-child > main > div ,
+div.main-view-container__scroll-node-child > main > div:after,
+div.main-view-container__scroll-node-child > main > div > div,
+div.main-view-container__scroll-node-child > main > div > div:after{
+    background:transparent !important;
+}
+
+
 /*
 -------------------
 PLAYLIST PAGE
