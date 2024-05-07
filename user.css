@@ -362,29 +362,46 @@ MAIN VIEW
     );
 }
 /* fix home card animation */
-.main-card-cardContainer:hover .main-cardImage-imageWrapper {
-    transform: perspective(75em) rotateX(20deg);
-}
+
 .main-card-cardContainer:hover::after{
     background-color:rgba(0, 0, 0, 0.3) !important;
 }
-  .main-gridContainer-gridContainer{
+.main-gridContainer-gridContainer{
     gap:8px;
 }
-.main-card-cardContainer .main-cardImage-imageWrapper {
+.main-card-cardContainer {
+    background: rgba(0, 0, 0, 0.3) !important;
+}
+div.main-gridContainer-gridContainer.main-shelf-shelfGrid > div > div{
+    background-color:transparent !important;
+}
+.main-card-cardContainer:hover .main-card-imageContainer {
+    transform: perspective(75em) rotateX(20deg);
+}
+.main-card-cardContainer .main-card-imageContainer {
     transition: transform 0.35s ease;
     transform-origin: 50% -40px;
     overflow: hidden;
 }
-  
-.main-card-cardContainer {
-    background: rgba(0, 0, 0, 0.3) !important;
+.main-card-cardContainer[aria-labelledby^="card-title-spotify:artist"]>.main-card-imageContainer{
+    border-radius: 50%;
 }
-.main-card-cardContainer:hover .main-card-imageContainer .main-cardImage-imageWrapper::after {
-  transform: rotate(45deg) translate(0px, -70%);
-  filter: blur(6px);
+.main-card-cardContainer:hover .main-card-imageContainer::after{
+    transform: rotate(45deg) translate(0px, -70%);
+    filter: blur(6px);
 }
-
+.main-card-imageContainer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg) translate(0px, -90%);
+    transition: all 0.3s ease-out;
+    filter: blur(4px);
+}
 .main-card-card .main-cardImage-imageWrapper {
     transition: transform 0.35s ease;
     transform-origin: 50% -40px;
@@ -399,18 +416,7 @@ MAIN VIEW
 .view-homeShortcutsGrid-shortcut {
     background: rgba(0, 0, 0, 0.3) !important;
 }
-.main-card-imageContainer .main-cardImage-imageWrapper::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.1);
-    transform: rotate(45deg) translate(0px, -90%);
-    transition: all 0.3s ease-out;
-    filter: blur(4px);
-}
+
 .main-card-card:hover .main-card-imageContainer .main-cardImage-imageWrapper::after {
     transform: rotate(45deg) translate(0px, -70%);
     filter: blur(6px);
