@@ -384,6 +384,10 @@ MAIN VIEW
 .main-card-cardContainer[aria-labelledby*="spotify:user:"]>.main-card-imageContainer{
     border-radius: 50%;
 }
+.main-card-PlayButtonContainer{
+    bottom: 20px !important;
+    right: 20px !important;
+}
 .main-card-cardContainer:hover .main-card-imageContainer::after{
     transform: rotate(45deg) translate(0px, -70%);
     filter: blur(6px);
@@ -688,6 +692,9 @@ POPUP MODAL
 }
 .artist-artistAbout-modalBase{
     background-color:var(--spice-player) !important;
+}
+.GenericModal > div >  div:nth-child(2) > div{
+    background: var(--spice-player) !important;
 }
 
 #banner-select {
@@ -1113,6 +1120,16 @@ LYRICS PAGE
 
 /*
 -------------------
+SETTTINGS PAGE
+-------------------
+*/
+
+.x-settings-equalizerSection{
+    background-color:rgba(0,0,0,0.3) !important;
+}
+
+/*
+-------------------
 SPICETIFY EXTENSIONS/APPS
 -------------------
 */
@@ -1162,6 +1179,10 @@ THIRD PARTY EXTENSIONS/APPS
     color: black !important;
 }
 
+/* Beautiful-Lyrics */
+.main-nowPlayingView-coverArt{
+    box-shadow:none !important;
+}
 /*The Eternal Jukebox*/
 .app-module__flex-center___p5IEY_eternalDjukebox button {
     color: black;
