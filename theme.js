@@ -263,7 +263,7 @@
   document.body.prepend(bgContainer);
 
   // add fade and dimness effects to mainview scroll node
-  waitForElement([".Root__main-view .os-viewport.os-viewport-native-scrollbars-invisible"], ([scrollNode]) => {
+  waitForElement([".Root__main-view .main-view-container__scroll-node > div:nth-child(2)"], ([scrollNode]) => {
     scrollNode.addEventListener("scroll", () => {
       // dim
       if (!isDim) {
@@ -272,9 +272,9 @@
         }) 0px, rgba(0, 0, 0, 0.1) 90%)`;
       }
       // fade
-      if (scrollNode.scrollTop == 0) {
+      if (!scrollNode.scrollTop) {
         scrollNode.setAttribute("fade", "bottom");
-      } else if (scrollNode.scrollHeight - scrollNode.scrollTop - scrollNode.clientHeight == 0) {
+      } else if (!(scrollNode.scrollHeight - scrollNode.scrollTop - scrollNode.clientHeight)) {
         scrollNode.setAttribute("fade", "top");
       } else {
         scrollNode.setAttribute("fade", "full");
@@ -282,7 +282,7 @@
     });
   });
 
-  waitForElement([".Root__nav-bar .os-viewport.os-viewport-native-scrollbars-invisible"], ([scrollNode]) => {
+  waitForElement([".Root__nav-bar .main-yourLibraryX-libraryItemContainer > div:nth-child(2)"], ([scrollNode]) => {
     scrollNode.setAttribute("fade", "bottom");
     scrollNode.addEventListener("scroll", () => {
       // fade
@@ -296,7 +296,7 @@
     });
   });
 
-  waitForElement([".Root__nav-right-sidebar .os-viewport.os-viewport-native-scrollbars-invisible"], ([scrollNode]) => {
+  waitForElement([".Root__right-sidebar .main-buddyFeed-scrollBarContainer > div:nth-child(2)"], ([scrollNode]) => {
     scrollNode.setAttribute("fade", "bottom");
     scrollNode.addEventListener("scroll", () => {
       // fade
