@@ -379,10 +379,14 @@ MAIN VIEW
     transition: transform 0.35s ease;
     transform-origin: 50% -40px;
     overflow: hidden;
+    border-radius: 6px;
 }
 .main-card-cardContainer[aria-labelledby^="card-title-spotify:artist"]>.main-card-imageContainer,
 .main-card-cardContainer[aria-labelledby*="spotify:user:"]>.main-card-imageContainer{
     border-radius: 50%;
+}
+.main-card-cardContainer[aria-labelledby*="ph1d"]>.main-card-imageContainer{
+    border-radius:6px;
 }
 .main-card-PlayButtonContainer{
     bottom: 20px !important;
@@ -558,7 +562,12 @@ div.main-view-container__scroll-node-child > main > div > div,
 div.main-view-container__scroll-node-child > main > div > div:after{
     background:transparent !important;
 }
-
+div.main-view-container__scroll-node-child > main > section[data-test-uri^="spotify:artist"] > div > div{
+    background:transparent;
+}
+div.main-gridContainer-gridContainer.main-shelf-shelfGrid> div[data-testid="top-result-card"] > div{
+    background-color:rgba(0,0,0,0.7);
+}
 
 /*
 -------------------
