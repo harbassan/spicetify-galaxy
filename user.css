@@ -379,10 +379,14 @@ MAIN VIEW
     transition: transform 0.35s ease;
     transform-origin: 50% -40px;
     overflow: hidden;
+    border-radius: 6px;
 }
 .main-card-cardContainer[aria-labelledby^="card-title-spotify:artist"]>.main-card-imageContainer,
 .main-card-cardContainer[aria-labelledby*="spotify:user:"]>.main-card-imageContainer{
     border-radius: 50%;
+}
+.main-card-cardContainer[aria-labelledby*="ph1d"]>.main-card-imageContainer{
+    border-radius:6px;
 }
 .main-card-PlayButtonContainer{
     bottom: 20px !important;
@@ -404,12 +408,13 @@ MAIN VIEW
     transition: all 0.3s ease-out;
     filter: blur(4px);
 }
-.main-card-card .main-cardImage-imageWrapper {
+.main-card-card .main-card-imageContainer {
     transition: transform 0.35s ease;
     transform-origin: 50% -40px;
     overflow: hidden;
+    border-radius: 6px;
 }
-.main-card-card:hover .main-cardImage-imageWrapper {
+.main-card-card:hover .main-card-imageContainer {
     transform: perspective(75em) rotateX(20deg);
 }
 .main-card-card {
@@ -419,7 +424,7 @@ MAIN VIEW
     background: rgba(0, 0, 0, 0.3) !important;
 }
 
-.main-card-card:hover .main-card-imageContainer .main-cardImage-imageWrapper::after {
+.main-card-card:hover .main-card-imageContainer::after {
     transform: rotate(45deg) translate(0px, -70%);
     filter: blur(6px);
 }
@@ -556,6 +561,12 @@ div.main-view-container__scroll-node-child > main > div:after,
 div.main-view-container__scroll-node-child > main > div > div,
 div.main-view-container__scroll-node-child > main > div > div:after{
     background:transparent !important;
+}
+div.main-view-container__scroll-node-child > main > section[data-test-uri^="spotify:artist"] > div > div{
+    background:transparent;
+}
+div.main-gridContainer-gridContainer.main-shelf-shelfGrid> div[data-testid="top-result-card"] > div{
+    background-color:rgba(0,0,0,0.7);
 }
 
 
@@ -986,7 +997,8 @@ button.search-searchCategory-carouselButton {
 .BoxComponent-group-tinted-listRow-isInteractive-hasFocus-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px:hover:after,
 .BoxComponent-group-naked-listRow-isInteractive-paddingBlockStart_4px-paddingBlockEnd_4px-minBlockSize_32px-padding_4px_8px:hover::after,
 .BoxComponent-group-tinted-listRow-isInteractive-paddingBlockStart_4px-paddingBlockEnd_4px-minBlockSize_32px-padding_4px_8px:hover::after,
-.BoxComponent-group-tinted-listRow-isInteractive-hasFocus-paddingBlockStart_4px-paddingBlockEnd_4px-minBlockSize_32px-padding_4px_8px:hover::after {
+.BoxComponent-group-tinted-listRow-isInteractive-hasFocus-paddingBlockStart_4px-paddingBlockEnd_4px-minBlockSize_32px-padding_4px_8px:hover::after,
+.BoxComponent-group-listRow-naked-isInteractive-minBlockSize_56px-padding_8px:hover::after {
     background: linear-gradient(
         90deg,
         transparent 0%,
