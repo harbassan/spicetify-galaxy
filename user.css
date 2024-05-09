@@ -569,6 +569,7 @@ div.main-gridContainer-gridContainer.main-shelf-shelfGrid> div[data-testid="top-
     background-color:rgba(0,0,0,0.7);
 }
 
+
 /*
 -------------------
 PLAYLIST PAGE
@@ -996,7 +997,8 @@ button.search-searchCategory-carouselButton {
 .BoxComponent-group-tinted-listRow-isInteractive-hasFocus-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px:hover:after,
 .BoxComponent-group-naked-listRow-isInteractive-paddingBlockStart_4px-paddingBlockEnd_4px-minBlockSize_32px-padding_4px_8px:hover::after,
 .BoxComponent-group-tinted-listRow-isInteractive-paddingBlockStart_4px-paddingBlockEnd_4px-minBlockSize_32px-padding_4px_8px:hover::after,
-.BoxComponent-group-tinted-listRow-isInteractive-hasFocus-paddingBlockStart_4px-paddingBlockEnd_4px-minBlockSize_32px-padding_4px_8px:hover::after {
+.BoxComponent-group-tinted-listRow-isInteractive-hasFocus-paddingBlockStart_4px-paddingBlockEnd_4px-minBlockSize_32px-padding_4px_8px:hover::after,
+.BoxComponent-group-listRow-naked-isInteractive-minBlockSize_56px-padding_8px:hover::after {
     background: linear-gradient(
         90deg,
         transparent 0%,
