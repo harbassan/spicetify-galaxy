@@ -404,12 +404,13 @@ MAIN VIEW
     transition: all 0.3s ease-out;
     filter: blur(4px);
 }
-.main-card-card .main-cardImage-imageWrapper {
+.main-card-card .main-card-imageContainer {
     transition: transform 0.35s ease;
     transform-origin: 50% -40px;
     overflow: hidden;
+    border-radius: 6px;
 }
-.main-card-card:hover .main-cardImage-imageWrapper {
+.main-card-card:hover .main-card-imageContainer {
     transform: perspective(75em) rotateX(20deg);
 }
 .main-card-card {
@@ -419,7 +420,7 @@ MAIN VIEW
     background: rgba(0, 0, 0, 0.3) !important;
 }
 
-.main-card-card:hover .main-card-imageContainer .main-cardImage-imageWrapper::after {
+.main-card-card:hover .main-card-imageContainer::after {
     transform: rotate(45deg) translate(0px, -70%);
     filter: blur(6px);
 }
