@@ -157,6 +157,12 @@ span.main-entityHeader-topbarTitle {
 .spotify__os--is-windows [data-right-sidebar-hidden="true"] .main-topBar-container {
     padding-right: 160px;
 }
+
+/* allow dragging from top bar */
+.main-topBar-background,
+.main-topBar-topbarContentWrapper {
+    -webkit-app-region: drag !important;
+}
 /*
 -------------------
 MARKETPLACE RELATED
@@ -441,6 +447,11 @@ MAIN VIEW
     position: initial;
     height: 24px;
 }
+
+/* home page chips sticky */
+.cj6vRk3nFAi80HSVqX91:has(> .mjZrvVI3CxfHJXu7y0Lg) {
+    visibility: hidden;
+}
 /*
 -------------------
 SEARCH PAGE
@@ -539,12 +550,6 @@ HIDE BACKGROUNDS
 }
 
 /*Fix backgrounds and sticky elements*/
-div.main-trackList-trackListHeader._2ajKWDiy6YvJu5wo8I1g{
-    box-shadow: 0px 0px 1px 0px white;
-    border-bottom:0px;
-    background:transparent !important;
-    backdrop-filter: blur(5px);
-  }
 .main-topBar-container,.main-topBar-overlay{
     background:transparent !important;
 }
@@ -622,6 +627,11 @@ button.x-filterBox-expandButton {
 img.main-entityHeader-image,
 .main-editImageButton-overlay {
     border-radius: 5px;
+}
+
+/* tracklist sticky header */
+div.main-trackList-trackListHeader._2ajKWDiy6YvJu5wo8I1g {
+    display: none;
 }
 /*
 -------------------
@@ -1063,7 +1073,7 @@ button.ChipClear__ChipClearComponent-sc-zv5btm-0:hover {
     -webkit-mask-image: linear-gradient(transparent 0%, rgba(0, 0, 0, 1) 20%);
 }
 .Root__nav-bar [fade="full"],
-.Root__right-sidebar[fade="full"] {
+.Root__right-sidebar [fade="full"] {
     -webkit-mask-image: linear-gradient(transparent 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, transparent 100%);
 }
 
@@ -1083,9 +1093,12 @@ RIGHT SIDEBAR
 .main-nowPlayingView-content.main-nowPlayingView-gradient{
     background:none !important;
 }
+.fAte2d0xETy7pnDUAgHY {
+    box-shadow: none;
+}
 
 /* add top padding */
-.spotify__os--is-windows .main-buddyFeed-content,
+.spotify__os--is-windows .main-buddyFeed-content:not(.JrMgH1WiJ8l1iOgYiEsS),
 .spotify__os--is-windows .main-nowPlayingView-content {
     padding-top: 36px;
 }
