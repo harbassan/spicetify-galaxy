@@ -671,7 +671,7 @@ ARTIST PAGE
 }
 .main-entityHeader-title h1 {
     font-size: 56px !important;
-    line-height: 56px !important;
+    line-height: 66px !important;
 }
 /* hide artist avatar image */
 .main-entityHeader-creatorWrapper figure.main-avatar-avatar {
