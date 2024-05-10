@@ -717,6 +717,25 @@ POPUP MODAL
 .GenericModal > div >  div:nth-child(2) > div{
     background: var(--spice-player) !important;
 }
+.GenericModal__overlay {
+    backdrop-filter: blur(20px);
+    background-color: rgba(var(--spice-rgb-shadow),.5);
+}
+.main-embedWidgetGenerator-container {
+    background-color: transparent !important;
+    box-shadow: none;
+}
+
+/* foreground colours */
+.main-trackCreditsModal-header {
+    color: rgba(var(--spice-rgb-text), 0.8);
+}
+.main-trackCreditsModal-mainSection .page-content {
+    --text-base: rgba(var(--spice-rgb-text), 0.8);
+}
+.main-trackCreditsModal-mainSection #stats-app .stats-genreRowFill {
+    background: rgba(var(--spice-rgb-text), 0.8);
+}
 
 #banner-select {
     grid-area: banner-image;
